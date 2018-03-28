@@ -13,7 +13,6 @@ cache:
     - $HOME/.gradle/wrapper/
 
 before_install:
- - ./gradlew wrapper --gradle-version 4.2.1
  - chmod +x gradlew
  
 script:

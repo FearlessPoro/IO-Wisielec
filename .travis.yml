@@ -16,3 +16,5 @@ notifications:
     io-projekt-cos:zrK5OeVOT9vomlsorKWuEF1j
     on_success: always
     on_failure: always
+  email:
+    wojtek.franczuk@gmail.com

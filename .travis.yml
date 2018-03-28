@@ -17,5 +17,4 @@ script:
 
 notifications:
   slack: io-projekt-cos:zrK5OeVOT9vomlsorKWuEF1j
-  email:
-    - wojtek.franczuk@gmail.com
+

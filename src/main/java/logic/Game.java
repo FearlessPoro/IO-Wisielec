@@ -22,7 +22,7 @@ public class Game {
     private void randomiseWord(){
         CsvDao csvDao;
         try {
-            Path path = Paths.get("src/test/resources", "sample.csv");
+            Path path = Paths.get("src/main/resources", "sample.csv");
             Reader reader = Files.newBufferedReader(
                     path, Charset.forName("UTF-8"));
             csvDao = new CsvDao(reader);
@@ -41,7 +41,7 @@ public class Game {
         HangManEntity hangManEntity = new HangManEntity();
 
         char selectedLetter;
-        while(hangManEntity.getHearths() > 0 && (!wordEntity.allLettersReveal())){
+        while(hangManEntity.getHearths() > 0 ){
             System.out.println("Word to guess: " + String.valueOf(wordEntity.getUnknownWord()) +
                     ". You have " + hangManEntity.getHearths() + " lives." );
 
@@ -64,7 +64,7 @@ public class Game {
                 hangManEntity.decrementLives();
             }
 
-            if(wordEntity.allLettersReveal())
+            if(wordEntity.allLettersRevealed())
                 break;
         }
 

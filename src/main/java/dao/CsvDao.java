@@ -22,7 +22,7 @@ public class CsvDao {
 
     private Reader source;
 
-    List<List<String>> readRecords() {
+    public List<List<String>> readRecords() {
         try (BufferedReader reader = new BufferedReader(source)) {
             return reader.lines()
                     .map(line -> Arrays.asList(line.split(SEPARATOR)))

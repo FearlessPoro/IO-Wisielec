@@ -31,4 +31,22 @@ public class HangManEntityTest {
 
         Assert.assertEquals(expectedLives, resultLives);
     }
+
+    @Test
+    public void isAlive() {
+        boolean isAlive = testEntity.isAlive();
+
+        Assert.assertTrue(isAlive);
+    }
+
+    @Test
+    public void isDead() {
+        for (int i = 0; i < 10; i++) {
+            testEntity.decrementLives();
+        }
+
+        boolean isAlive = testEntity.isAlive();
+
+        Assert.assertFalse(isAlive);
+    }
 }

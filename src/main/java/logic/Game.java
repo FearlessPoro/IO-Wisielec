@@ -4,74 +4,69 @@ import dao.CsvDao;
 import entity.HangManEntity;
 import entity.WordEntity;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.io.UncheckedIOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Game {
-
     private WordEntity wordEntity;
+    private HangManEntity hangManEntity;
 
-    private void randomiseWord(){
-        CsvDao csvDao;
-        try {
-            Path path = Paths.get("src/main/resources", "sample.csv");
-            Reader reader = Files.newBufferedReader(
-                    path, Charset.forName("UTF-8"));
-            csvDao = new CsvDao(reader);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
+    public void start() {
+        gameInit();
+
+        while (canPlay(wordEntity, hangManEntity)) {
+            continueGameStep();
         }
-        List<List<String>> allWords = csvDao.readRecords();
-        Random randomizer = new Random();
-        List<String> wordToGuess = allWords.get(randomizer.nextInt(allWords.size()));
 
-        this.wordEntity = new WordEntity(String.join(" ", wordToGuess));
+        showWinLossMessages(wordEntity, hangManEntity);
     }
 
-    public void start(){
-        randomiseWord();
-        HangManEntity hangManEntity = new HangManEntity();
+    private void gameInit() {
+        Path path = Paths.get("src/main/resources", "sample.csv");
+        wordEntity = new CsvDao(path).getRandomWord();
+        hangManEntity = new HangManEntity();
+    }
 
-        char selectedLetter;
-        while(hangManEntity.getHearths() > 0 ){
-            System.out.println("Word to guess: " + String.valueOf(wordEntity.getUnknownWord()) +
-                    ". You have " + hangManEntity.getHearths() + " lives." );
+    private boolean canPlay(WordEntity wordEntity, HangManEntity hangManEntity) {
+        return hangManEntity.isAlive() && !wordEntity.allLettersRevealed();
+    }
 
-            System.out.print("Choose some letter: ");
-            Scanner reader = new Scanner(System.in);
-            selectedLetter = reader.next().charAt(0);
+    private void continueGameStep() {
+        System.out.println("Word to guess: " + String.valueOf(wordEntity.getUnknownWord()) +
+                ". You have " + hangManEntity.getHearths() + " lives.");
 
-            if(wordEntity.alreadySelectedLetter(selectedLetter)){
-                System.out.println("You tried with \'" + selectedLetter + "\' letter before");
-                hangManEntity.decrementLives();
-                continue;
-            }else{
-                wordEntity.addToAlreadySelectedLetter(selectedLetter);
-            }
+        char selectedLetter = selectLetter();
 
-            if(wordEntity.ifWordToGuessContainsLetter(selectedLetter)){
-                System.out.println("You chosen good letter. \'" + selectedLetter + "\' is in the word.");
-            }else{
-                System.out.println("You chosen bad letter. \'" + selectedLetter + "\' is not in the word.");
-                hangManEntity.decrementLives();
-            }
-
-            if(wordEntity.allLettersRevealed())
-                break;
+        if (wordEntity.alreadySelectedLetter(selectedLetter)) {
+            System.out.println("You tried with \'" + selectedLetter + "\' letter before");
+            hangManEntity.decrementLives();
+            return;
+        } else {
+            wordEntity.addToAlreadySelectedLetter(selectedLetter);
         }
 
-        if(hangManEntity.getHearths() > 0){
+        if (wordEntity.doesTheWordToGuessContainsLetter(selectedLetter)) {
+            wordEntity.revealAllDuplicatesIfWordToGuessContainsLetter(selectedLetter);
+            System.out.println("You've chosen good letter. \'" + selectedLetter + "\' is in the word.");
+        } else {
+            System.out.println("You've chosen bad letter. \'" + selectedLetter + "\' is not in the word.");
+            hangManEntity.decrementLives();
+        }
+    }
+
+    private char selectLetter() {
+        System.out.print("Choose some letter: ");
+        Scanner reader = new Scanner(System.in);
+
+        return reader.next().charAt(0);
+    }
+
+    private void showWinLossMessages(WordEntity wordEntity, HangManEntity hangManEntity) {
+        if (hangManEntity.isAlive()) {
             System.out.println("Congratulations! You win and you still have " + hangManEntity.getHearths() + " more lives.");
-        }else{
-            System.out.println("No more lives. You lose!" );
+        } else {
+            System.out.println("No more lives. You lose!");
             System.out.println("The word to guess was: \"" + wordEntity.getWordToGuess() + "\".");
         }
     }

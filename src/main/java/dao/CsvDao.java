@@ -1,23 +1,34 @@
 package dao;
 
+import entity.WordEntity;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.UncheckedIOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collectors;
 
 
 public class CsvDao {
     private static final String SEPARATOR = ";";
 
-    public CsvDao(Reader source) {
-        this.source = source;
+    public CsvDao(Path path) {
+        setSourcePath(path);
     }
 
-    public void setSource(Reader source) {
-        this.source = source;
+    public void setSourcePath(Path path) {
+        try {
+            this.source = Files.newBufferedReader(
+                    path, Charset.forName("UTF-8"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private Reader source;
@@ -30,5 +41,16 @@ public class CsvDao {
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }
+    }
+
+    public WordEntity getRandomWord() {
+        List<List<String>> allWords = readRecords();
+
+        Random random = new Random();
+        int randomCategoryIndex = random.nextInt(allWords.size());
+        List<String> categoryToGuess = allWords.get(randomCategoryIndex);
+        int randomWordIndex = random.nextInt(categoryToGuess.size());
+
+        return new WordEntity(categoryToGuess.get(randomWordIndex));
     }
 }

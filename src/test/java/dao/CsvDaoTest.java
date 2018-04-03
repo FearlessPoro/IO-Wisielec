@@ -4,9 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.*;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Arrays;
@@ -17,15 +14,9 @@ public class CsvDaoTest {
     private CsvDao testDao;
 
     @Before
-    public void setUp() throws Exception {
-        try {
-            Path path = Paths.get("src/test/resources", "sample.csv");
-            Reader reader = Files.newBufferedReader(
-                    path, Charset.forName("UTF-8"));
-            testDao = new CsvDao(reader);
-        } catch (IOException e) {
-            throw new UncheckedIOException(e);
-        }
+    public void setUp() {
+        Path path = Paths.get("src/test/resources", "sample.csv");
+        testDao = new CsvDao(path);
     }
 
     @Test

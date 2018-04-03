@@ -1,18 +1,21 @@
 package entity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class WordEntity {
 
     private String wordToGuess;
     private char[] unknownWord;
-    private ArrayList<Character> selectedLetters;
+    private List<Character> selectedLetters;
 
     public WordEntity(String wordToGuess) {
         this.wordToGuess = wordToGuess;
         this.unknownWord = new char[wordToGuess.length()];
         this.selectedLetters = new ArrayList<>();
-        for(int i = 0; i < wordToGuess.length(); ++i) {
+
+        for (int i = 0; i < wordToGuess.length(); ++i) {
             if (Character.isWhitespace(wordToGuess.charAt(i)))
                 unknownWord[i] = ' ';
             else
@@ -28,36 +31,31 @@ public class WordEntity {
         return unknownWord;
     }
 
-
-    public boolean alreadySelectedLetter(Character character){
+    public boolean alreadySelectedLetter(Character character) {
         return selectedLetters.contains(character);
     }
 
-    public void addToAlreadySelectedLetter(Character character){
+    public void addToAlreadySelectedLetter(Character character) {
         selectedLetters.add(character);
     }
 
-    public boolean ifWordToGuessContainsLetter(char character){
-        boolean contains = false;
-        for(int i = 0, n = this.wordToGuess.length() ; i < n ; i++) {
-            char c = this.wordToGuess.charAt(i);
-            if(c == character){
+    public boolean doesTheWordToGuessContainsLetter(char character) {
+        return wordToGuess.contains(String.valueOf(character));
+    }
+
+    public void revealAllDuplicatesIfWordToGuessContainsLetter(char character) {
+        for (int i = 0; i < wordToGuess.length(); i++) {
+            if (wordToGuess.charAt(i) == character) {
                 revealLetter(i);
-                contains = true;
             }
         }
-        return contains;
     }
 
     public boolean allLettersRevealed() {
-        for(char c : unknownWord)
-            if(c == '_')
-                return false;
-        return true;
+        return !Arrays.toString(unknownWord).contains("_");
     }
 
     private void revealLetter(int index) {
         unknownWord[index] = wordToGuess.charAt(index);
     }
-
 }

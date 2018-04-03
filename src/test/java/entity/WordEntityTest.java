@@ -4,18 +4,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-
-import static org.junit.Assert.*;
-
 public class WordEntityTest {
     private WordEntity testEntity;
     private final String testWord = "test";
     private String testUnknownWord = "____";
-    private ArrayList<Character> selectedLetters;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         testEntity = new WordEntity(testWord);
     }
 
@@ -23,8 +18,9 @@ public class WordEntityTest {
     public void revealLetter() {
         String revealedLetter = "t__t";
 
-        testEntity.ifWordToGuessContainsLetter('t');
+        testEntity.revealAllDuplicatesIfWordToGuessContainsLetter('t');
         char resultWord[] = testEntity.getUnknownWord();
+
         Assert.assertArrayEquals(revealedLetter.toCharArray(), resultWord);
     }
 
@@ -54,22 +50,32 @@ public class WordEntityTest {
         testEntity.addToAlreadySelectedLetter('e');
 
         Assert.assertTrue(testEntity.alreadySelectedLetter('e'));
-        Assert.assertTrue(!testEntity.alreadySelectedLetter('t'));
+        Assert.assertFalse(testEntity.alreadySelectedLetter('t'));
+    }
+
+    @Test
+    public void notAllLettersRevealed() {
+        testEntity.revealAllDuplicatesIfWordToGuessContainsLetter('t');
+
+        Assert.assertFalse(testEntity.allLettersRevealed());
     }
 
     @Test
     public void allLettersRevealed() {
-        testEntity.ifWordToGuessContainsLetter('t');
-        testEntity.ifWordToGuessContainsLetter('e');
-        Assert.assertTrue(!testEntity.allLettersRevealed());
+        testEntity.revealAllDuplicatesIfWordToGuessContainsLetter('t');
+        testEntity.revealAllDuplicatesIfWordToGuessContainsLetter('e');
+        testEntity.revealAllDuplicatesIfWordToGuessContainsLetter('s');
 
-        testEntity.ifWordToGuessContainsLetter('s');
         Assert.assertTrue(testEntity.allLettersRevealed());
     }
 
     @Test
-    public void ifWordToGuessContainsLetter() {
-        Assert.assertTrue(testEntity.ifWordToGuessContainsLetter('t'));
-        Assert.assertTrue(!testEntity.ifWordToGuessContainsLetter('a'));
+    public void wordToGuessContainsLetter() {
+        Assert.assertTrue(testEntity.doesTheWordToGuessContainsLetter('t'));
+    }
+
+    @Test
+    public void wordToGuessNotContainsLetter() {
+        Assert.assertFalse(testEntity.doesTheWordToGuessContainsLetter('a'));
     }
 }

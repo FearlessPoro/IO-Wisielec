@@ -15,4 +15,8 @@ public class HangManEntity {
     public void decrementLives() {
         this.hearths--;
     }
+
+    public boolean isAlive() {
+        return hearths > 0;
+    }
 }

@@ -1,3 +1,5 @@
+package controllers;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -234,15 +236,15 @@ public class Gui1 {
 
     @FXML
     void initialize() {
-        assert keyboardPane != null : "fx:id=\"keyboardPane\" was not injected: check your FXML file 'Gui1.fxml'.";
-        assert passwordPane != null : "fx:id=\"passwordPane\" was not injected: check your FXML file 'Gui1.fxml'.";
-        assert guessPasswordField != null : "fx:id=\"guessPasswordField\" was not injected: check your FXML file 'Gui1.fxml'.";
-        assert wholePasswordField != null : "fx:id=\"wholePasswordField\" was not injected: check your FXML file 'Gui1.fxml'.";
-        assert hangedManPane != null : "fx:id=\"hangedManPane\" was not injected: check your FXML file 'Gui1.fxml'.";
-        assert winMessageLabel != null : "fx:id=\"winMessageLabel\" was not injected: check your FXML file 'Gui1.fxml'.";
-        assert leftChanceLabel != null : "fx:id=\"leftChanceLabel\" was not injected: check your FXML file 'Gui1.fxml'.";
-        assert randomPasswordPane != null : "fx:id=\"randomPasswordPane\" was not injected: check your FXML file 'Gui1.fxml'.";
-        assert saveAndExitPane != null : "fx:id=\"saveAndExitPane\" was not injected: check your FXML file 'Gui1.fxml'.";
+        assert keyboardPane != null : "fx:id=\"keyboardPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
+        assert passwordPane != null : "fx:id=\"passwordPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
+        assert guessPasswordField != null : "fx:id=\"guessPasswordField\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
+        assert wholePasswordField != null : "fx:id=\"wholePasswordField\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
+        assert hangedManPane != null : "fx:id=\"hangedManPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
+        assert winMessageLabel != null : "fx:id=\"winMessageLabel\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
+        assert leftChanceLabel != null : "fx:id=\"leftChanceLabel\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
+        assert randomPasswordPane != null : "fx:id=\"randomPasswordPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
+        assert saveAndExitPane != null : "fx:id=\"saveAndExitPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
 
     }
 }

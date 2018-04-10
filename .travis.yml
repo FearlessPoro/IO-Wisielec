@@ -1,4 +1,5 @@
 language: java
+install: true
 
 jdk:
   - oraclejdk8
@@ -16,7 +17,7 @@ before_install:
  - chmod +x gradlew
  
 script:
-  - gradle check
+  - ./gradlew build --scan -s
 
 notifications:
   slack: io-projekt-cos:zrK5OeVOT9vomlsorKWuEF1j

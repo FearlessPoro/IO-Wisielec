@@ -2,7 +2,8 @@ apply plugin: 'java'
 apply plugin: 'application'
 
 compileJava {
-    sourceCompatibility = '1.8'
+    sourceCompatibility = '9'
+    targetCompatibility = '9'
 }
 
 compileJava.options.encoding = 'UTF-8'

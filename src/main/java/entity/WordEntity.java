@@ -1,10 +1,11 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class WordEntity {
+public class WordEntity implements Serializable {
 
     private String wordToGuess;
     private char[] unknownWord;

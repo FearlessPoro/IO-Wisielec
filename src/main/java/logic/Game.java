@@ -4,6 +4,7 @@ import dao.CsvDao;
 import entity.HangManEntity;
 import entity.WordEntity;
 
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
@@ -11,63 +12,119 @@ import java.util.Scanner;
 public class Game {
     private WordEntity wordEntity;
     private HangManEntity hangManEntity;
+    private boolean inGame = false;
 
     public void start() {
         gameInit();
-
-        while (canPlay(wordEntity, hangManEntity)) {
-            continueGameStep();
-        }
-
-        showWinLossMessages(wordEntity, hangManEntity);
     }
 
     private void gameInit() {
+        inGame = true;
         Path path = Paths.get("src/main/resources", "sample.csv");
         wordEntity = new CsvDao(path).getRandomWord();
         hangManEntity = new HangManEntity();
     }
 
-    private boolean canPlay(WordEntity wordEntity, HangManEntity hangManEntity) {
-        return hangManEntity.isAlive() && !wordEntity.allLettersRevealed();
+    public boolean checkIfInGame() {
+        return inGame;
     }
 
-    private void continueGameStep() {
-        System.out.println("Word to guess: " + String.valueOf(wordEntity.getUnknownWord()) +
-                ". You have " + hangManEntity.getHearths() + " lives.");
+    public char[] getUnknownWord() {
+        return wordEntity.getUnknownWord();
+    }
 
-        char selectedLetter = selectLetter();
+    public int getHearths() {
+        return hangManEntity.getHearths();
+    }
 
-        if (wordEntity.alreadySelectedLetter(selectedLetter)) {
-            System.out.println("You tried with \'" + selectedLetter + "\' letter before");
+    public boolean alreadySelectedLetter(Character character){return wordEntity.alreadySelectedLetter(character);}
+
+    public void selectedLetter(Character character) {
+        if (wordEntity.alreadySelectedLetter(character)) {
             hangManEntity.decrementLives();
             return;
         } else {
-            wordEntity.addToAlreadySelectedLetter(selectedLetter);
+            wordEntity.addToAlreadySelectedLetter(character);
         }
 
-        if (wordEntity.doesTheWordToGuessContainsLetter(selectedLetter)) {
-            wordEntity.revealAllDuplicatesIfWordToGuessContainsLetter(selectedLetter);
-            System.out.println("You've chosen good letter. \'" + selectedLetter + "\' is in the word.");
+        if (wordEntity.doesTheWordToGuessContainsLetter(character)) {
+            wordEntity.revealAllDuplicatesIfWordToGuessContainsLetter(character);
         } else {
-            System.out.println("You've chosen bad letter. \'" + selectedLetter + "\' is not in the word.");
             hangManEntity.decrementLives();
         }
     }
 
-    private char selectLetter() {
-        System.out.print("Choose some letter: ");
-        Scanner reader = new Scanner(System.in);
-
-        return reader.next().charAt(0);
+    public boolean canPlay() {
+        return inGame = (hangManEntity.isAlive() && !wordEntity.allLettersRevealed());
     }
 
-    private void showWinLossMessages(WordEntity wordEntity, HangManEntity hangManEntity) {
+    public String takeEndMessage() {
         if (hangManEntity.isAlive()) {
-            System.out.println("Congratulations! You win and you still have " + hangManEntity.getHearths() + " more lives.");
+            return "Congratulations! Guessed word: " + wordEntity.getWordToGuess() + ". You win and you still have " + hangManEntity.getHearths() + " more lives.";
         } else {
-            System.out.println("No more lives. You lose!");
-            System.out.println("The word to guess was: \"" + wordEntity.getWordToGuess() + "\".");
+            return "No more lives. You lose!" + "The word to guess was: \"" + wordEntity.getWordToGuess() + "\".";
         }
     }
+
+    public boolean checkWholeWord(String wholeWord) {
+        if (wholeWord.equals(wordEntity.getWordToGuess())) {
+            inGame = false;
+            return true;
+        } else {
+            hangManEntity.decrementLives();
+            return false;
+        }
+    }
+
+    public void serialize() {
+        try {
+            FileOutputStream fileOut =
+                    new FileOutputStream("src/main/resources/game.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(wordEntity);
+            out.writeObject(hangManEntity);
+            out.close();
+            fileOut.close();
+        } catch (IOException i) {
+            i.printStackTrace();
+        }
+    }
+
+    public boolean deserialize() {
+        File f = new File("src/main/resources/game.ser");
+        if(f.exists() && !f.isDirectory()) {
+            try {
+                FileInputStream fileIn = new FileInputStream("src/main/resources/game.ser");
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                wordEntity = (WordEntity) in.readObject();
+                hangManEntity = (HangManEntity) in.readObject();
+                in.close();
+                fileIn.close();
+                inGame = true;
+
+                clearSaves();
+
+                return true;
+            } catch (IOException i) {
+                i.printStackTrace();
+                return false;
+            } catch (ClassNotFoundException c) {
+                System.out.println("Some classes not found");
+                c.printStackTrace();
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    private void clearSaves() {
+        File f = new File("src/main/resources/game.ser");
+        if(f.exists() && !f.isDirectory()) {
+            if(f.delete()) {
+                System.out.println("Usunieto save");
+            }
+        }
+    }
+
 }

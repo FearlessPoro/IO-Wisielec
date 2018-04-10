@@ -22,7 +22,7 @@ public class CsvDao {
         setSourcePath(path);
     }
 
-    public void setSourcePath(Path path) {
+    private void setSourcePath(Path path) {
         try {
             this.source = Files.newBufferedReader(
                     path, Charset.forName("UTF-8"));
@@ -33,7 +33,7 @@ public class CsvDao {
 
     private Reader source;
 
-    public List<List<String>> readRecords() {
+    List<List<String>> readRecords() {
         try (BufferedReader reader = new BufferedReader(source)) {
             return reader.lines()
                     .map(line -> Arrays.asList(line.split(SEPARATOR)))
@@ -49,8 +49,8 @@ public class CsvDao {
         Random random = new Random();
         int randomCategoryIndex = random.nextInt(allWords.size());
         List<String> categoryToGuess = allWords.get(randomCategoryIndex);
-        int randomWordIndex = random.nextInt(categoryToGuess.size());
+        int randomWordIndex = random.nextInt(categoryToGuess.size()-1);
 
-        return new WordEntity(categoryToGuess.get(randomWordIndex));
+        return new WordEntity(categoryToGuess.get(randomWordIndex+1));
     }
 }

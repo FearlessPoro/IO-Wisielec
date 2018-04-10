@@ -1,6 +1,8 @@
 package entity;
 
-public class HangManEntity {
+import java.io.Serializable;
+
+public class HangManEntity implements Serializable {
 
     private int hearths;
 

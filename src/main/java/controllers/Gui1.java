@@ -51,7 +51,7 @@ public class Gui1 {
     private Pane saveAndExitPane;
 
     @FXML
-    private Button A, A1, B, C, C1, D, E, E1, F, G, H, I, J ,K, L, L1, M, N, N1, O, O1, P, Q, R, S, S1, T, U, V, W, X, Y ,Z, Z1, Z2 ;
+    private Button A, A1, B, C, C1, D, E, E1, F, G, H, I, J, K, L, L1, M, N, N1, O, O1, P, Q, R, S, S1, T, U, V, W, X, Y, Z, Z1, Z2;
 
     @FXML
     private Button checkPassword, randomPassword;
@@ -340,7 +340,7 @@ public class Gui1 {
         guessPasswordField.setText(String.valueOf(game.getUnknownWord()));
         leftChanceLabel.setText(Integer.toString(game.getHearths()));
 
-        if(!game.canPlay()) {
+        if (!game.canPlay()) {
             guessPasswordField.setFont(Font.font("Verdana", 20));
             guessPasswordField.setText(String.valueOf(game.takeEndMessage()));
             changeButtonsState(false);
@@ -348,7 +348,7 @@ public class Gui1 {
     }
 
     private void changeButtonsState(Boolean state) {
-        for (Node node: keyboardPane.getChildren()) {
+        for (Node node : keyboardPane.getChildren()) {
             if (node instanceof Button) {
                 node.setDisable(!state);
             }
@@ -358,7 +358,7 @@ public class Gui1 {
     }
 
     private void changeButtonStateAfterDeserialization(Boolean state) {
-        for (Node node: keyboardPane.getChildren()) {
+        for (Node node : keyboardPane.getChildren()) {
             if (node instanceof Button) {
                 final Button button = (Button) node;
                 if (game.alreadySelectedLetter(button.getText().charAt(0))) {

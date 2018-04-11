@@ -1,15 +1,11 @@
+package controllers;
 
-
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-import javafx.event.ActionEvent;
-import javafx.scene.Parent;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 
 public class mainViewController {
@@ -35,13 +31,13 @@ public class mainViewController {
     }
 
     @FXML
-    void exitAction(ActionEvent event) throws Exception{
+    void exitAction(ActionEvent event) throws Exception {
         System.exit(0);
     }
 
     @FXML
-    void newGameAction(ActionEvent event) throws Exception{
-        HangMan.root.getChildren().add(FXMLLoader.load(getClass().getResource("categories.fxml")));
+    void newGameAction(ActionEvent event) throws Exception {
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../categories.fxml")));
     }
 
 }

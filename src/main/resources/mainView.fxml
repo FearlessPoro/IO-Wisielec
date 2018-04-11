@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="622.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainViewController">
+   <children>
+      <ScrollPane prefHeight="622.0" prefWidth="948.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="604.0" prefWidth="946.0">
+               <children>
+                  <ImageView fx:id="logoPane" fitHeight="594.0" fitWidth="476.0" layoutX="53.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@wisielec.png" />
+                     </image>
+                  </ImageView>
+                  <Pane fx:id="menuPane" layoutX="495.0" layoutY="81.0" prefHeight="483.0" prefWidth="404.0">
+                     <children>
+                        <Button fx:id="newGameButton" layoutX="66.0" layoutY="50.0" mnemonicParsing="false" onAction="#newGameAction" prefHeight="84.0" prefWidth="284.0" text="NOWA GRA" />
+                        <Button fx:id="bestScoresButton" layoutX="66.0" layoutY="170.0" mnemonicParsing="false" onAction="#bestScoresAction" prefHeight="84.0" prefWidth="284.0" text="ZOBACZ WYNIKI" />
+                        <Button fx:id="exitButton" layoutX="66.0" layoutY="290.0" mnemonicParsing="false" onAction="#exitAction" prefHeight="84.0" prefWidth="284.0" text="WYJDŹ Z GRY" />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

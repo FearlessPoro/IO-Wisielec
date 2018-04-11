@@ -42,7 +42,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="A1"  alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="74.0" layoutY="9.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#a1Click" prefHeight="33.0" prefWidth="50.0" text="Ą" textAlignment="CENTER" textFill="#2d2c2ecf">
+                        <Button fx:id="A1" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="74.0" layoutY="9.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#a1Click" prefHeight="33.0" prefWidth="50.0" text="Ą" textAlignment="CENTER" textFill="#2d2c2ecf">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -246,7 +246,7 @@
                      </children></Pane>
                   <Pane fx:id="saveAndExitPane" layoutX="733.0" layoutY="383.0" prefHeight="213.0" prefWidth="192.0">
                      <children>
-                        <Button layoutX="20.0" layoutY="46.0" mnemonicParsing="false" onAction="#saveAndExitAction" prefHeight="122.0" prefWidth="152.0" text="Zapisz i wyjdź">
+                        <Button fx:id="saveAndExitButton" layoutX="20.0" layoutY="46.0" mnemonicParsing="false" onAction="#saveAndExitAction" prefHeight="122.0" prefWidth="152.0" text="Zapisz i wyjdź">
                            <font>
                               <Font name="System Bold" size="16.0" />
                            </font>

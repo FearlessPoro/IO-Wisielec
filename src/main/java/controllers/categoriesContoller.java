@@ -35,37 +35,37 @@ public class categoriesContoller {
 
     @FXML
     void allChooseAction(ActionEvent event) throws Exception {
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../Gui1.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../gameView.fxml")));
     }
 
     @FXML
     void culinaryChooseAction(ActionEvent event) throws Exception {
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../Gui1.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../gameView.fxml")));
     }
 
     @FXML
     void geographyChooseAction(ActionEvent event) throws Exception {
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../Gui1.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../gameView.fxml")));
     }
 
     @FXML
     void kinoChooseAction(ActionEvent event) throws Exception {
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../Gui1.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../gameView.fxml")));
     }
 
     @FXML
     void literatureChooseAction(ActionEvent event) throws Exception {
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../Gui1.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../gameView.fxml")));
     }
 
     @FXML
     void musicChooseAction(ActionEvent event) throws Exception {
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../Gui1.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../gameView.fxml")));
     }
 
     @FXML
     void sportChooseAction(ActionEvent event) throws Exception {
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../Gui1.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../gameView.fxml")));
     }
 
     @FXML

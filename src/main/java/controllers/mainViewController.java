@@ -1,12 +1,12 @@
 package controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
-
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 
 public class mainViewController {
 
@@ -20,14 +20,38 @@ public class mainViewController {
     private Button newGameButton;
 
     @FXML
-    private Button bestScoresButton;
+    private Button restoreGameButton;
+
+    @FXML
+    private Button rankingButton;
+
+    @FXML
+    private Button addPasswordButton;
 
     @FXML
     private Button exitButton;
 
     @FXML
-    void bestScoresAction(ActionEvent event) {
+    private ToggleButton nightModeButton;
 
+    @FXML
+    void newGameAction(ActionEvent event) throws Exception {
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../gameMode.fxml")));
+    }
+
+    @FXML
+    void restoreGameAction(ActionEvent event) throws Exception{
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../gameView.fxml")));
+    }
+
+    @FXML
+    void rankingAction(ActionEvent event) throws Exception{
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../ranking.fxml")));
+    }
+
+    @FXML
+    void addPasswordAction(ActionEvent event) throws Exception{
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../categoriesToAddPassword.fxml")));
     }
 
     @FXML
@@ -36,8 +60,7 @@ public class mainViewController {
     }
 
     @FXML
-    void newGameAction(ActionEvent event) throws Exception {
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../categories.fxml")));
-    }
+    void nightModeAction(ActionEvent event) throws Exception{
 
+    }
 }

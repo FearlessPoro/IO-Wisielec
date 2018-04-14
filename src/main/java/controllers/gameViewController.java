@@ -2,6 +2,7 @@ package controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,7 +14,7 @@ import logic.Game;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Gui1 {
+public class gameViewController {
 
     private Game game;
 
@@ -45,16 +46,13 @@ public class Gui1 {
     private Label leftChanceLabel;
 
     @FXML
-    private Pane randomPasswordPane;
-
-    @FXML
-    private Pane saveAndExitPane;
+    private Pane buttonsPane;
 
     @FXML
     private Button A, A1, B, C, C1, D, E, E1, F, G, H, I, J, K, L, L1, M, N, N1, O, O1, P, Q, R, S, S1, T, U, V, W, X, Y, Z, Z1, Z2;
 
     @FXML
-    private Button checkPassword, randomPassword;
+    private Button checkPassword, randomPassword, giveUpButton;
 
     @FXML
     void a1Click(ActionEvent event) {
@@ -291,8 +289,7 @@ public class Gui1 {
         assert hangedManPane != null : "fx:id=\"hangedManPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
         assert winMessageLabel != null : "fx:id=\"winMessageLabel\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
         assert leftChanceLabel != null : "fx:id=\"leftChanceLabel\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
-        assert randomPasswordPane != null : "fx:id=\"randomPasswordPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
-        assert saveAndExitPane != null : "fx:id=\"saveAndExitPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
+        assert buttonsPane != null : "fx:id=\"randomPasswordPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
     }
 
     @FXML
@@ -329,6 +326,11 @@ public class Gui1 {
         }
 
         System.exit(0);
+    }
+
+    @FXML
+    void giveUpAction(ActionEvent event) throws Exception{
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../mainView.fxml")));
     }
 
     private void afterClickedOnLetter(Character character) {

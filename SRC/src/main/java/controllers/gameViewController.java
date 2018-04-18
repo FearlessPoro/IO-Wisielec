@@ -49,10 +49,15 @@ public class gameViewController {
     private Pane buttonsPane;
 
     @FXML
+    private Label passwordCategoryLabel;
+
+    @FXML
     private Button A, A1, B, C, C1, D, E, E1, F, G, H, I, J, K, L, L1, M, N, N1, O, O1, P, Q, R, S, S1, T, U, V, W, X, Y, Z, Z1, Z2;
 
     @FXML
     private Button checkPassword, randomPassword, giveUpButton;
+
+
 
     @FXML
     void a1Click(ActionEvent event) {

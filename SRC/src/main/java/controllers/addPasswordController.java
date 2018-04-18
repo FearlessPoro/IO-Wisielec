@@ -13,6 +13,9 @@ public class addPasswordController {
     private TextArea passwordToAddTextField;
 
     @FXML
+    private TextArea passwordToConfirmTextArea;
+
+    @FXML
     private Button confirmButton;
 
     @FXML
@@ -23,13 +26,11 @@ public class addPasswordController {
 
     @FXML
     void confirmAction(ActionEvent event) throws Exception{
-        passwordToAddTextField.clear();
-        confirmationLabel.setVisible(true);
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../mainView.fxml")));
     }
 
     @FXML
     void returnAction(ActionEvent event) throws Exception{
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../mainView.fxml")));
     }
-
 }

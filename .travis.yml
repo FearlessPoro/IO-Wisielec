@@ -17,7 +17,7 @@ before_install:
  - chmod +x gradlew
  
 script:
-  - ./gradlew build --scan -s
+  - ./SRC/gradlew build --scan -s
 
 notifications:
   slack: io-projekt-cos:zrK5OeVOT9vomlsorKWuEF1j

@@ -14,10 +14,11 @@ cache:
     - $HOME/.gradle/wrapper/
 
 before_install:
- - chmod -R +x SRC
+ - cd SRC
+ - chmod +x gradlew
  
 script:
-  - ./SRC/gradlew build --scan -s
+  - .gradlew build --scan -s
 
 notifications:
   slack: io-projekt-cos:zrK5OeVOT9vomlsorKWuEF1j

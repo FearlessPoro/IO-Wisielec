@@ -14,7 +14,7 @@ cache:
     - $HOME/.gradle/wrapper/
 
 before_install:
- - chmod +x gradlew
+ - chmod +x SRC/gradlew
  
 script:
   - ./SRC/gradlew build --scan -s

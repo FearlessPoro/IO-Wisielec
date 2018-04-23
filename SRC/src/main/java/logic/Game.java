@@ -88,14 +88,10 @@ public class Game {
     }
 
     public void serialize() {
-        try {
-            FileOutputStream fileOut =
-                    new FileOutputStream("src/main/resources/game.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        try (FileOutputStream fileOut = new FileOutputStream("src/main/resources/game.ser");
+             ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
             out.writeObject(wordEntity);
             out.writeObject(hangManEntity);
-            out.close();
-            fileOut.close();
         } catch (IOException i) {
             i.printStackTrace();
         }
@@ -103,30 +99,23 @@ public class Game {
 
     public boolean deserialize() {
         File f = new File("src/main/resources/game.ser");
+
         if (f.exists() && !f.isDirectory()) {
-            try {
-                FileInputStream fileIn = new FileInputStream("src/main/resources/game.ser");
-                ObjectInputStream in = new ObjectInputStream(fileIn);
+            try (FileInputStream fileIn = new FileInputStream("src/main/resources/game.ser");
+                 ObjectInputStream in = new ObjectInputStream(fileIn)) {
                 wordEntity = (WordEntity) in.readObject();
                 hangManEntity = (HangManEntity) in.readObject();
-                in.close();
-                fileIn.close();
-                inGame = true;
 
+                inGame = true;
                 clearSaves();
 
                 return true;
-            } catch (IOException i) {
+            } catch (IOException | ClassNotFoundException i) {
                 i.printStackTrace();
-                return false;
-            } catch (ClassNotFoundException c) {
-                System.out.println("Some classes not found");
-                c.printStackTrace();
-                return false;
             }
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     private void clearSaves() {

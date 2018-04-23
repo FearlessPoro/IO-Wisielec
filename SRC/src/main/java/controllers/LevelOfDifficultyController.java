@@ -1,9 +1,10 @@
 package controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.event.ActionEvent;
+import logic.LevelDifficulty;
 
 public class LevelOfDifficultyController {
 
@@ -21,16 +22,19 @@ public class LevelOfDifficultyController {
 
     @FXML
     void easyLevelAction(ActionEvent event) throws Exception{
+        GameViewController.level = LevelDifficulty.EASY;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/categories.fxml")));
     }
 
     @FXML
     void mediumLevelAction(ActionEvent event) throws Exception{
+        GameViewController.level = LevelDifficulty.MEDIUM;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/categories.fxml")));
     }
 
     @FXML
     void hardLevelAction(ActionEvent event) throws Exception{
+        GameViewController.level = LevelDifficulty.HARD;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/categories.fxml")));
     }
 

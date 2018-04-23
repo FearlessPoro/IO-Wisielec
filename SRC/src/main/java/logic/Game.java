@@ -12,17 +12,21 @@ public class Game {
     private WordEntity wordEntity;
     private HangManEntity hangManEntity;
     private boolean inGame = false;
+    private LevelDifficulty level;
+    private Category category;
 
-    public void start() {
-        gameInit();
+    public Game(LevelDifficulty level, Category category) {
+        this.level = level;
+        this.category = category;
+
+        SoundEffect.init();
     }
 
-    private void gameInit() {
+    public void start() {
         inGame = true;
         Path path = Paths.get("src/main/resources", "database/sample.csv");
         wordEntity = new CsvDao(path).getRandomWord();
         hangManEntity = new HangManEntity();
-        SoundEffect.init();
     }
 
     public boolean checkIfInGame() {
@@ -37,7 +41,9 @@ public class Game {
         return hangManEntity.getHearths();
     }
 
-    public boolean alreadySelectedLetter(Character character){return wordEntity.alreadySelectedLetter(character);}
+    public boolean alreadySelectedLetter(Character character) {
+        return wordEntity.alreadySelectedLetter(character);
+    }
 
     public void selectedLetter(Character character) {
         if (wordEntity.alreadySelectedLetter(character)) {
@@ -97,7 +103,7 @@ public class Game {
 
     public boolean deserialize() {
         File f = new File("src/main/resources/game.ser");
-        if(f.exists() && !f.isDirectory()) {
+        if (f.exists() && !f.isDirectory()) {
             try {
                 FileInputStream fileIn = new FileInputStream("src/main/resources/game.ser");
                 ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -125,8 +131,8 @@ public class Game {
 
     private void clearSaves() {
         File f = new File("src/main/resources/game.ser");
-        if(f.exists() && !f.isDirectory()) {
-            if(f.delete()) {
+        if (f.exists() && !f.isDirectory()) {
+            if (f.delete()) {
                 System.out.println("Usunieto save");
             }
         }

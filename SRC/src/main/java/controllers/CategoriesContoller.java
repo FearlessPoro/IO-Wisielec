@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import logic.Category;
 
 
 public class CategoriesContoller {
@@ -35,36 +36,43 @@ public class CategoriesContoller {
 
     @FXML
     void allChooseAction(ActionEvent event) throws Exception {
+        GameViewController.category = Category.ALL;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameView.fxml")));
     }
 
     @FXML
     void culinaryChooseAction(ActionEvent event) throws Exception {
+        GameViewController.category = Category.CULINARY;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameView.fxml")));
     }
 
     @FXML
     void geographyChooseAction(ActionEvent event) throws Exception {
+        GameViewController.category = Category.GEOGRAPHY;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameView.fxml")));
     }
 
     @FXML
     void kinoChooseAction(ActionEvent event) throws Exception {
+        GameViewController.category = Category.KINO;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameView.fxml")));
     }
 
     @FXML
     void literatureChooseAction(ActionEvent event) throws Exception {
+        GameViewController.category = Category.LITERATURE;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameView.fxml")));
     }
 
     @FXML
     void musicChooseAction(ActionEvent event) throws Exception {
+        GameViewController.category = Category.MUSIC;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameView.fxml")));
     }
 
     @FXML
     void sportChooseAction(ActionEvent event) throws Exception {
+        GameViewController.category = Category.SPORT;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameView.fxml")));
     }
 

@@ -9,12 +9,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
+import logic.Category;
 import logic.Game;
+import logic.LevelDifficulty;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GameViewController {
+
+    static LevelDifficulty level = LevelDifficulty.EASY;
+    static Category category = Category.ALL;
 
     private Game game;
 
@@ -274,7 +279,7 @@ public class GameViewController {
     void initialize() {
 
         changeButtonsState(false);
-        game = new Game();
+        game = new Game(level, category);
 
         if (game.deserialize()) {
             System.out.println("Udana deseralizacja");

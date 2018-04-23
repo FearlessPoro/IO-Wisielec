@@ -61,7 +61,7 @@ public class CategoriesToAddPasswordController {
 
     @FXML
     void returnAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../mainView.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/mainView.fxml")));
     }
 
 }

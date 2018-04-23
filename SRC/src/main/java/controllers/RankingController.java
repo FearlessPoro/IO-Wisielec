@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextArea;
 
-public class rankingController {
+public class RankingController {
 
     @FXML
     private Button returnButton;

@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 
-public class categoriesContoller {
+public class CategoriesContoller {
 
     @FXML
     private Pane categoriesPane;

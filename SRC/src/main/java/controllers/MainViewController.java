@@ -8,7 +8,7 @@ import javafx.scene.layout.Pane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 
-public class mainViewController {
+public class MainViewController {
 
     @FXML
     private ImageView logoPane;

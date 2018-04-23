@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.event.ActionEvent;
 
-public class categoriesToAddPasswordController {
+public class CategoriesToAddPasswordController {
 
     @FXML
     private Pane categoriesPane;

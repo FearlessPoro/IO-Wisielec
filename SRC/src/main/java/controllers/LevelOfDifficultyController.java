@@ -5,7 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 
-public class levelOfDifficultyController {
+public class LevelOfDifficultyController {
 
     @FXML
     private Button easyLevelButton;

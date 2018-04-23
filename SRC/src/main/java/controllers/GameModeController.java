@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 
 
-public class gameModeController {
+public class GameModeController {
 
     @FXML
     private Button normalModeButton;

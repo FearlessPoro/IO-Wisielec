@@ -14,7 +14,7 @@ import logic.Game;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class gameViewController {
+public class GameViewController {
 
     private Game game;
 

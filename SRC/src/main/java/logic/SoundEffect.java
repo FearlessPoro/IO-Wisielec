@@ -5,10 +5,10 @@ import java.io.IOException;
 import java.net.URL;
 
 public enum SoundEffect {
-    BAD_LETTER("bad_letter.wav"),
-    GOOD_LETTER("good_letter.wav"),
-    GAME_LOST("game_lost.wav"),
-    GAME_WON("game_won.wav");
+    BAD_LETTER("sounds/battle003.wav"),
+    GOOD_LETTER("sounds/battle003.wav"),
+    GAME_LOST("sounds/battle003.wav"),
+    GAME_WON("sounds/battle003.wav");
 
     private Clip clip;
 

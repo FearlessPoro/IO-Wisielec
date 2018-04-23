@@ -23,6 +23,7 @@ public class Game {
         Path path = Paths.get("src/main/resources", "sample.csv");
         wordEntity = new CsvDao(path).getRandomWord();
         hangManEntity = new HangManEntity();
+        SoundEffect.init();
     }
 
     public boolean checkIfInGame() {
@@ -42,15 +43,18 @@ public class Game {
     public void selectedLetter(Character character) {
         if (wordEntity.alreadySelectedLetter(character)) {
             hangManEntity.decrementLives();
+            SoundEffect.BAD_LETTER.play();
             return;
         } else {
             wordEntity.addToAlreadySelectedLetter(character);
+            SoundEffect.GOOD_LETTER.play();
         }
 
         if (wordEntity.doesTheWordToGuessContainsLetter(character)) {
             wordEntity.revealAllDuplicatesIfWordToGuessContainsLetter(character);
         } else {
             hangManEntity.decrementLives();
+            SoundEffect.BAD_LETTER.play();
         }
     }
 
@@ -60,8 +64,10 @@ public class Game {
 
     public String takeEndMessage() {
         if (hangManEntity.isAlive()) {
+            SoundEffect.GAME_WON.play();
             return "Congratulations! Guessed word: " + wordEntity.getWordToGuess() + ". You win and you still have " + hangManEntity.getHearths() + " more lives.";
         } else {
+            SoundEffect.GAME_LOST.play();
             return "No more lives. You lose!" + "The word to guess was: \"" + wordEntity.getWordToGuess() + "\".";
         }
     }

@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class RankEntity implements Serializable {
@@ -15,6 +16,21 @@ public class RankEntity implements Serializable {
         Record(Integer points, String wordToGuess) {
             this.points = points;
             this.wordToGuess = wordToGuess;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (!(o instanceof Record)) return false;
+            Record record = (Record) o;
+            return Objects.equals(points, record.points) &&
+                    Objects.equals(wordToGuess, record.wordToGuess);
+        }
+
+        @Override
+        public int hashCode() {
+
+            return Objects.hash(points, wordToGuess);
         }
     }
 

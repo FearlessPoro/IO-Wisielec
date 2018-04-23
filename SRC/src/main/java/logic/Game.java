@@ -2,6 +2,7 @@ package logic;
 
 import dao.CsvDao;
 import entity.HangManEntity;
+import entity.RankEntity;
 import entity.WordEntity;
 
 import java.io.*;
@@ -14,6 +15,8 @@ public class Game {
     private boolean inGame = false;
     private LevelDifficulty level;
     private Category category;
+    private int secondsLeft = 0;
+    private RankEntity rank;
 
     public Game(LevelDifficulty level, Category category) {
         this.level = level;
@@ -27,6 +30,8 @@ public class Game {
         Path path = Paths.get("src/main/resources", "database/sample.csv");
         wordEntity = new CsvDao(path).getRandomWord();
         hangManEntity = new HangManEntity();
+
+        rank = RankEntity.deserialize();
     }
 
     public boolean checkIfInGame() {
@@ -70,11 +75,17 @@ public class Game {
     public String takeEndMessage() {
         if (hangManEntity.isAlive()) {
             SoundEffect.GAME_WON.play();
+            rank.addToRank(calculatePoints(), wordEntity.getWordToGuess());
+            RankEntity.serialize(rank);
             return "Congratulations! Guessed word: " + wordEntity.getWordToGuess() + ". You win and you still have " + hangManEntity.getHearths() + " more lives.";
         } else {
             SoundEffect.GAME_LOST.play();
             return "No more lives. You lose!" + "The word to guess was: \"" + wordEntity.getWordToGuess() + "\".";
         }
+    }
+
+    private int calculatePoints() {
+        return level.getPoints() + secondsLeft + 10 * hangManEntity.getHearths();
     }
 
     public boolean checkWholeWord(String wholeWord) {

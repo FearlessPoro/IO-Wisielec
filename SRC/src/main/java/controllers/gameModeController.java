@@ -19,17 +19,17 @@ public class gameModeController {
 
     @FXML
     void normalModeAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../levelOfDifficulty.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/levelOfDifficulty.fxml")));
     }
 
     @FXML
     void timeModeAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../levelOfDifficulty.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/levelOfDifficulty.fxml")));
     }
 
     @FXML
     void returnAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../mainView.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/mainView.fxml")));
     }
 
 }

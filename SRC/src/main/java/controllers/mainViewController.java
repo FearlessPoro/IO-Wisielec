@@ -36,22 +36,22 @@ public class mainViewController {
 
     @FXML
     void newGameAction(ActionEvent event) throws Exception {
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../gameMode.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameMode.fxml")));
     }
 
     @FXML
     void restoreGameAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../gameView.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameView.fxml")));
     }
 
     @FXML
     void rankingAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../ranking.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/ranking.fxml")));
     }
 
     @FXML
     void addPasswordAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../categoriesToAddPassword.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/categoriesToAddPassword.fxml")));
     }
 
     @FXML

@@ -31,32 +31,32 @@ public class categoriesToAddPasswordController {
 
     @FXML
     void culinaryChooseAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../addPassword.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/addPassword.fxml")));
     }
 
     @FXML
     void geographyChooseAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../addPassword.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/addPassword.fxml")));
     }
 
     @FXML
     void kinoChooseAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../addPassword.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/addPassword.fxml")));
     }
 
     @FXML
     void literatureChooseAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../addPassword.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/addPassword.fxml")));
     }
 
     @FXML
     void musicChooseAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../addPassword.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/addPassword.fxml")));
     }
 
     @FXML
     void sportChooseAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../addPassword.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/addPassword.fxml")));
     }
 
     @FXML

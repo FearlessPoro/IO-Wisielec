@@ -335,7 +335,7 @@ public class gameViewController {
 
     @FXML
     void giveUpAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../mainView.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/mainView.fxml")));
     }
 
     private void afterClickedOnLetter(Character character) {

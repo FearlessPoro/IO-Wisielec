@@ -12,7 +12,7 @@ public class HangMan extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        HangmanDelegate.root = FXMLLoader.load(getClass().getResource("mainView.fxml"));
+        HangmanDelegate.root = FXMLLoader.load(getClass().getResource("fxml/mainView.fxml"));
 
         Scene scene = new Scene(HangmanDelegate.root);
 

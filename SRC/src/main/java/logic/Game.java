@@ -7,7 +7,6 @@ import entity.WordEntity;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Scanner;
 
 public class Game {
     private WordEntity wordEntity;
@@ -20,7 +19,7 @@ public class Game {
 
     private void gameInit() {
         inGame = true;
-        Path path = Paths.get("src/main/resources", "sample.csv");
+        Path path = Paths.get("src/main/resources", "database/sample.csv");
         wordEntity = new CsvDao(path).getRandomWord();
         hangManEntity = new HangManEntity();
         SoundEffect.init();

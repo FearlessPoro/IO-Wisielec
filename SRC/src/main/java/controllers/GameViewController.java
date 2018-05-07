@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -12,7 +13,8 @@ import javafx.scene.text.Font;
 import logic.Category;
 import logic.Game;
 import logic.LevelDifficulty;
-
+import javafx.scene.canvas.Canvas;
+import javafx.scene.paint.Color;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -62,7 +64,14 @@ public class GameViewController {
     @FXML
     private Button checkPassword, randomPassword, giveUpButton;
 
+    @FXML
+    public Canvas hangmanCanvas;
 
+    @FXML
+    public Label passwordCategory;
+
+    @FXML
+    private Button jumpingJackButton;
 
     @FXML
     void a1Click(ActionEvent event) {
@@ -275,6 +284,87 @@ public class GameViewController {
         Z.setDisable(true);
     }
 
+    public void drawGrayHangman(boolean jumping){
+
+        GraphicsContext gc = hangmanCanvas.getGraphicsContext2D();
+        gc.setFill(Color.GRAY);
+        gc.setStroke(Color.GRAY);
+
+        //gallows tree
+        gc.fillRoundRect(50, 310, 140, 20, 10, 10);
+        gc.fillRoundRect(100, 20, 20, 300, 10, 10);
+        gc.fillRoundRect(40, 30, 300, 20, 10, 10);
+        gc.setLineWidth(10);
+        gc.strokeLine(95, 90, 175, 30);
+        gc.setLineWidth(8);
+        gc.strokeLine(245, 35, 245, 90);
+
+        if(!jumping) {
+            //arms
+            gc.setLineWidth(18);
+            gc.strokeLine(230, 162, 190, 200);
+            gc.strokeLine(300, 200, 260, 162);
+
+            //legs
+            gc.strokeLine(230, 240, 220, 280);
+            gc.strokeLine(260, 240, 270, 280);
+        }
+        else {
+            gc.setLineWidth(18);
+            gc.strokeLine(220, 150, 190, 200);
+            gc.strokeLine(320, 190, 260, 162);
+
+            //legs
+            gc.strokeLine(230, 240, 220, 280);
+            gc.strokeLine(260, 240, 270, 280);
+        }
+
+        //stomach
+        gc.fillOval(210,145,70,100);
+
+        //head
+        gc.fillOval(215,90,60,60);
+    }
+
+    public void drawColourfulHangman(int amountOfLives){
+        GraphicsContext gc = hangmanCanvas.getGraphicsContext2D();
+        gc.setFill(Color.GREEN);
+        gc.setStroke(Color.GREEN);
+        switch (amountOfLives){
+            case 9:     gc.fillRoundRect(50, 310, 140, 20, 10, 10);
+                break;
+            case 8:     gc.fillRoundRect(100, 20, 20, 300, 10, 10);
+                break;
+            case 7:     gc.fillRoundRect(40, 30, 300, 20, 10, 10);
+                gc.setLineWidth(10);
+                gc.strokeLine(95, 90, 175, 30);
+                break;
+            case 6:     gc.setLineWidth(10);
+                gc.strokeLine(245, 35, 245, 90);
+                break;
+            case 5:     gc.fillOval(215,90,60,60);
+                break;
+            case 4:     gc.fillOval(210,145,70,100);
+                break;
+            case 3:     gc.setLineWidth(18);
+                gc.strokeLine(230, 162, 190, 200);
+                break;
+            case 2:     gc.setLineWidth(18);
+                gc.strokeLine(300, 200, 260, 162);
+                break;
+            case 1:     gc.setLineWidth(18);
+                gc.strokeLine(230, 240, 220, 280);
+                break;
+            case 0:     gc.setLineWidth(18);
+                gc.strokeLine(260, 240, 270, 280);
+                break;
+            default:
+                break;
+        }
+    }
+
+
+
     @FXML
     void initialize() {
 
@@ -292,6 +382,27 @@ public class GameViewController {
             System.out.println("Nic do deserializacji");
         }
 
+        switch (category){
+            case ALL:       passwordCategory.setText("Wszystkie");
+                            break;
+            case KINO:      passwordCategory.setText("Kino");
+                            break;
+            case MUSIC:     passwordCategory.setText("Muzyka");
+                            break;
+            case CULINARY:  passwordCategory.setText("Kulinaria");
+                            break;
+            case GEOGRAPHY: passwordCategory.setText("Geografia");
+                            break;
+            case SPORT:     passwordCategory.setText("Sport");
+                            break;
+            case LITERATURE:passwordCategory.setText("Literatura");
+                            break;
+            default:        passwordCategory.setText("Błąd");
+                            break;
+        }
+
+        drawGrayHangman(false);
+
         assert keyboardPane != null : "fx:id=\"keyboardPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
         assert passwordPane != null : "fx:id=\"passwordPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
         assert guessPasswordField != null : "fx:id=\"guessPasswordField\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
@@ -301,6 +412,17 @@ public class GameViewController {
         assert leftChanceLabel != null : "fx:id=\"leftChanceLabel\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
         assert buttonsPane != null : "fx:id=\"randomPasswordPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
     }
+
+    @FXML
+    void jumpingJackAction(ActionEvent event) {
+//
+//        GraphicsContext gc = hangmanCanvas.getGraphicsContext2D();
+//        gc.clearRect(0, 0, hangmanCanvas.getWidth(), hangmanCanvas.getHeight());
+//        for(int i=10; i==game.getHearths(); i--){
+//            drawColourfulHangman(i);
+//        }
+    }
+
 
     @FXML
     void randomPasswordAction(ActionEvent event) {
@@ -346,6 +468,7 @@ public class GameViewController {
     private void afterClickedOnLetter(Character character) {
         game.selectedLetter(character);
         checkIfContinue();
+        drawColourfulHangman(game.getHearths());
     }
 
     private void checkIfContinue() {
@@ -356,6 +479,7 @@ public class GameViewController {
             guessPasswordField.setFont(Font.font("Verdana", 20));
             guessPasswordField.setText(String.valueOf(game.takeEndMessage()));
             changeButtonsState(false);
+            drawColourfulHangman(game.getHearths());
         }
     }
 

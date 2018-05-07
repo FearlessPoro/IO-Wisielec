@@ -1,0 +1,33 @@
+.button {
+    -fx-background-color:  linear-gradient(#339900   , #006600 );
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-padding: 1 10 1 10;
+}
+
+.background{
+    /*-fx-background-color: #333366;*/
+    -fx-background-color: linear-gradient(black, #336633);
+}
+
+.toggle-button{
+    -fx-background-color:  linear-gradient(#339900   , #006600 );
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 5 30 5 30;
+}
+
+#returnButton {
+    -fx-background-color:  linear-gradient(#339900   , #006600 );
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 2 10 2 10;
+}
+
+.label {
+    -fx-text-fill: lightgrey;
+}
+

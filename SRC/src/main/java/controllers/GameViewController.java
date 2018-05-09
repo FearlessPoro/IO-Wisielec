@@ -1,5 +1,8 @@
 package controllers;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,14 +12,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.util.Duration;
 import logic.Category;
 import logic.Game;
 import logic.LevelDifficulty;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.paint.Color;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 public class GameViewController {
 
@@ -72,6 +80,8 @@ public class GameViewController {
 
     @FXML
     private Button jumpingJackButton;
+
+    public GraphicsContext gc;
 
     @FXML
     void a1Click(ActionEvent event) {
@@ -284,9 +294,8 @@ public class GameViewController {
         Z.setDisable(true);
     }
 
-    public void drawGrayHangman(boolean jumping){
+    public void drawGrayHangman(GraphicsContext gc, boolean jumping){
 
-        GraphicsContext gc = hangmanCanvas.getGraphicsContext2D();
         gc.setFill(Color.GRAY);
         gc.setStroke(Color.GRAY);
 
@@ -311,12 +320,12 @@ public class GameViewController {
         }
         else {
             gc.setLineWidth(18);
-            gc.strokeLine(220, 150, 190, 200);
-            gc.strokeLine(320, 190, 260, 162);
+            gc.strokeLine(230, 162, 170, 160);
+            gc.strokeLine(320, 162, 260, 160);
 
             //legs
-            gc.strokeLine(230, 240, 220, 280);
-            gc.strokeLine(260, 240, 270, 280);
+            gc.strokeLine(230, 235, 180, 255);
+            gc.strokeLine(260, 235, 310, 255);
         }
 
         //stomach
@@ -326,44 +335,45 @@ public class GameViewController {
         gc.fillOval(215,90,60,60);
     }
 
-    public void drawColourfulHangman(int amountOfLives){
-        GraphicsContext gc = hangmanCanvas.getGraphicsContext2D();
+    public void drawColourfulHangman(GraphicsContext gc, int amountOfLives, boolean jumping){
         gc.setFill(Color.GREEN);
         gc.setStroke(Color.GREEN);
         switch (amountOfLives){
             case 9:     gc.fillRoundRect(50, 310, 140, 20, 10, 10);
-                break;
+                        break;
             case 8:     gc.fillRoundRect(100, 20, 20, 300, 10, 10);
-                break;
+                        break;
             case 7:     gc.fillRoundRect(40, 30, 300, 20, 10, 10);
-                gc.setLineWidth(10);
-                gc.strokeLine(95, 90, 175, 30);
-                break;
+                        break;
             case 6:     gc.setLineWidth(10);
-                gc.strokeLine(245, 35, 245, 90);
-                break;
-            case 5:     gc.fillOval(215,90,60,60);
-                break;
+                        gc.strokeLine(95, 90, 175, 30);
+                        break;
+            case 5:     gc.setLineWidth(10);
+                        gc.strokeLine(245, 35, 245, 90);
+                        gc.fillOval(215,90,60,60);
+                        break;
             case 4:     gc.fillOval(210,145,70,100);
-                break;
+                        break;
             case 3:     gc.setLineWidth(18);
-                gc.strokeLine(230, 162, 190, 200);
-                break;
+                        if(!jumping) gc.strokeLine(230, 162, 190, 200);
+                        else gc.strokeLine(230, 162, 170, 160);
+                        break;
             case 2:     gc.setLineWidth(18);
-                gc.strokeLine(300, 200, 260, 162);
-                break;
+                        if(!jumping) gc.strokeLine(300, 200, 260, 162);
+                        else gc.strokeLine(320, 162, 260, 160);
+                        break;
             case 1:     gc.setLineWidth(18);
-                gc.strokeLine(230, 240, 220, 280);
-                break;
+                        if(!jumping) gc.strokeLine(230, 240, 220, 280);
+                        else gc.strokeLine(230, 235, 180, 255);
+                        break;
             case 0:     gc.setLineWidth(18);
-                gc.strokeLine(260, 240, 270, 280);
-                break;
+                        if(!jumping) gc.strokeLine(260, 240, 270, 280);
+                        else gc.strokeLine(260, 235, 310, 255);
+                        break;
             default:
-                break;
+                        break;
         }
     }
-
-
 
     @FXML
     void initialize() {
@@ -401,7 +411,8 @@ public class GameViewController {
                             break;
         }
 
-        drawGrayHangman(false);
+        gc = hangmanCanvas.getGraphicsContext2D();
+        drawGrayHangman(gc, false);
 
         assert keyboardPane != null : "fx:id=\"keyboardPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
         assert passwordPane != null : "fx:id=\"passwordPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
@@ -414,13 +425,44 @@ public class GameViewController {
     }
 
     @FXML
-    void jumpingJackAction(ActionEvent event) {
+    void jumpingJackAction(ActionEvent event) throws Exception{
+
+        Timeline timeline = new Timeline();
+        Duration timepoint = Duration.ZERO ;
+        Duration pause = Duration.seconds(5);
+
+        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+        drawGrayHangman(gc, true);
+        timepoint = timepoint.add(pause);
+        KeyFrame initial1 = new KeyFrame(timepoint, e -> hangedManPane.getChildren());
+        timeline.getKeyFrames().add(initial1);
+
+        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+        drawGrayHangman(gc, false);
+        timepoint = timepoint.add(pause);
+        KeyFrame initial2 = new KeyFrame(timepoint);
+        timeline.getKeyFrames().add(initial2);
+////
+//        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+//        drawGrayHangman(gc, false);
+//        timeline.getKeyFrames().add(initial1);
+
+        timeline.play();
+
+
+//            Thread.sleep(1000L);
+//            TimeUnit.SECONDS.sleep(1);
 //
-//        GraphicsContext gc = hangmanCanvas.getGraphicsContext2D();
-//        gc.clearRect(0, 0, hangmanCanvas.getWidth(), hangmanCanvas.getHeight());
-//        for(int i=10; i==game.getHearths(); i--){
-//            drawColourfulHangman(i);
-//        }
+//            gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+//            drawGrayHangman(gc, true);
+//            System.out.println("koniec");
+//
+//            TimeUnit.SECONDS.sleep(1);
+////            Thread.sleep(1000L);
+//            gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
+//            drawGrayHangman(gc, false);
+//            System.out.println("koniec");
+
     }
 
 
@@ -468,7 +510,7 @@ public class GameViewController {
     private void afterClickedOnLetter(Character character) {
         game.selectedLetter(character);
         checkIfContinue();
-        drawColourfulHangman(game.getHearths());
+        drawColourfulHangman(gc, game.getHearths(), false);
     }
 
     private void checkIfContinue() {
@@ -479,7 +521,6 @@ public class GameViewController {
             guessPasswordField.setFont(Font.font("Verdana", 20));
             guessPasswordField.setText(String.valueOf(game.takeEndMessage()));
             changeButtonsState(false);
-            drawColourfulHangman(game.getHearths());
         }
     }
 

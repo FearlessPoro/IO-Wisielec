@@ -1,12 +1,7 @@
-import controllers.GameViewController;
 import controllers.HangmanDelegate;
-import controllers.MainViewController;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class HangMan extends Application {

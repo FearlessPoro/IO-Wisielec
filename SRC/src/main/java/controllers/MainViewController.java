@@ -34,13 +34,8 @@ public class MainViewController {
     private Button exitButton;
 
     @FXML
-    public ToggleButton nightModeButton;
+    private Button dayModeButton2;
 
-    @FXML
-    private ToggleGroup nightMode;
-
-    @FXML
-    private ToggleButton dayModeButton;
 
     @FXML
     void newGameAction(ActionEvent event) throws Exception {
@@ -68,24 +63,17 @@ public class MainViewController {
     }
 
     @FXML
-    void nightModeAction(ActionEvent event) {
-//        Image nightHangMan = new Image("images/.png");
-//        Image dayHangMan = new Image("images/wisielec.png");
-        if(nightModeButton.isSelected()) {
+    void dayModeAction2(ActionEvent event) {
+        if(HangmanDelegate.nightModeOn){
+            HangmanDelegate.root.getStylesheets().clear();
+            HangmanDelegate.root.getStylesheets().add("stylesheet/dayStyle.css");
+            HangmanDelegate.nightModeOn = false;
+        }
+        else {
             HangmanDelegate.root.getStylesheets().clear();
             HangmanDelegate.root.getStylesheets().add("stylesheet/nightStyle.css");
-//            logoPane.setImage(nightHangMan);
+            HangmanDelegate.nightModeOn = true;
         }
     }
 
-    @FXML
-    void dayModeAction(ActionEvent event) {
-//        Image nightHangMan = new Image("images/wisielecNoc.png");
-//        Image dayHangMan = new Image("images/test.png");
-        if(dayModeButton.isSelected()) {
-            HangmanDelegate.root.getStylesheets().clear();
-            HangmanDelegate.root.getStylesheets().add("stylesheet/dayStyle.css");
-//            logoPane.setImage(dayHangMan);
-        }
-    }
 }

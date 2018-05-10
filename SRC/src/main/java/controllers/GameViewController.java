@@ -1,30 +1,30 @@
 package controllers;
 
 import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.util.Duration;
 import logic.Category;
 import logic.Game;
 import logic.LevelDifficulty;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.paint.Color;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 
 public class GameViewController {
 
@@ -52,7 +52,7 @@ public class GameViewController {
     private TextArea wholePasswordField;
 
     @FXML
-    private Pane hangedManPane;
+    public Pane hangedManPane;
 
     @FXML
     private Label winMessageLabel;
@@ -73,15 +73,29 @@ public class GameViewController {
     private Button checkPassword, randomPassword, giveUpButton;
 
     @FXML
-    public Canvas hangmanCanvas;
-
-    @FXML
-    public Label passwordCategory;
+    private Label passwordCategory;
 
     @FXML
     private Button jumpingJackButton;
 
-    public GraphicsContext gc;
+    //shapes
+    private Rectangle gallows1 = new Rectangle(50, 310, 140, 20);
+    private Rectangle gallows2 = new Rectangle(100, 20, 20, 300);
+    private Rectangle gallows3 = new Rectangle(40, 30, 300, 20);
+    private Line gallows4 = new Line(95, 90, 175, 30);
+    private Line gallows5 = new Line(245, 35, 245, 90);
+    private Ellipse head = new Ellipse(245,120,30,30);
+    private Ellipse stomach = new Ellipse(245,195,35,50);
+
+    private Line leftArm = new Line(230, 162, 190, 200);
+    private Line rightArm = new Line(300, 200, 260, 162);
+    private Line leftLeg = new Line(230, 240, 220, 280);
+    private Line rightLeg = new Line(260, 240, 270, 280);
+
+    private Line leftArmJ = new Line(230, 162, 170, 160);
+    private Line rightArmJ = new Line(320, 162, 260, 160);
+    private Line leftLegJ = new Line(230, 235, 180, 255);
+    private Line rightLegJ = new Line(260, 235, 310, 255);
 
     @FXML
     void a1Click(ActionEvent event) {
@@ -294,81 +308,77 @@ public class GameViewController {
         Z.setDisable(true);
     }
 
-    public void drawGrayHangman(GraphicsContext gc, boolean jumping){
+    private void drawGrayHangman(){
 
-        gc.setFill(Color.GRAY);
-        gc.setStroke(Color.GRAY);
+        gallows5.setStrokeWidth(10);
+        gallows5.setStroke(Color.GRAY);
+        hangedManPane.getChildren().add(gallows5);
 
-        //gallows tree
-        gc.fillRoundRect(50, 310, 140, 20, 10, 10);
-        gc.fillRoundRect(100, 20, 20, 300, 10, 10);
-        gc.fillRoundRect(40, 30, 300, 20, 10, 10);
-        gc.setLineWidth(10);
-        gc.strokeLine(95, 90, 175, 30);
-        gc.setLineWidth(8);
-        gc.strokeLine(245, 35, 245, 90);
+        gallows4.setStrokeWidth(10);
+        gallows4.setStroke(Color.GRAY);
+        hangedManPane.getChildren().add(gallows4);
 
-        if(!jumping) {
-            //arms
-            gc.setLineWidth(18);
-            gc.strokeLine(230, 162, 190, 200);
-            gc.strokeLine(300, 200, 260, 162);
+        gallows3.setArcHeight(10);
+        gallows3.setArcWidth(10);
+        gallows3.setFill(Color.GRAY);
+        hangedManPane.getChildren().add(gallows3);
 
-            //legs
-            gc.strokeLine(230, 240, 220, 280);
-            gc.strokeLine(260, 240, 270, 280);
-        }
-        else {
-            gc.setLineWidth(18);
-            gc.strokeLine(230, 162, 170, 160);
-            gc.strokeLine(320, 162, 260, 160);
+        gallows2.setArcHeight(10);
+        gallows2.setArcWidth(10);
+        gallows2.setFill(Color.GRAY);
+        hangedManPane.getChildren().add(gallows2);
 
-            //legs
-            gc.strokeLine(230, 235, 180, 255);
-            gc.strokeLine(260, 235, 310, 255);
-        }
+        gallows1.setArcHeight(10);
+        gallows1.setArcWidth(10);
+        gallows1.setFill(Color.GRAY);
+        hangedManPane.getChildren().add(gallows1);
 
-        //stomach
-        gc.fillOval(210,145,70,100);
+        leftArm.setStrokeWidth(18);
+        leftArm.setStroke(Color.GRAY);
+        hangedManPane.getChildren().add(leftArm);
 
-        //head
-        gc.fillOval(215,90,60,60);
+        rightArm.setStrokeWidth(18);
+        rightArm.setStroke(Color.GRAY);
+        hangedManPane.getChildren().add(rightArm);
+
+        leftLeg.setStrokeWidth(18);
+        leftLeg.setStroke(Color.GRAY);
+        hangedManPane.getChildren().add(leftLeg);
+
+        rightLeg.setStrokeWidth(18);
+        rightLeg.setStroke(Color.GRAY);
+        hangedManPane.getChildren().add(rightLeg);
+
+        stomach.setFill(Color.GRAY);
+        hangedManPane.getChildren().add(stomach);
+
+        head.setFill(Color.GRAY);
+        hangedManPane.getChildren().add(head);
     }
 
-    public void drawColourfulHangman(GraphicsContext gc, int amountOfLives, boolean jumping){
-        gc.setFill(Color.GREEN);
-        gc.setStroke(Color.GREEN);
+    private void drawColourfulHangman(int amountOfLives){
+
         switch (amountOfLives){
-            case 9:     gc.fillRoundRect(50, 310, 140, 20, 10, 10);
+            case 9:     gallows1.setFill(Color.GREEN);
                         break;
-            case 8:     gc.fillRoundRect(100, 20, 20, 300, 10, 10);
+            case 8:     gallows2.setFill(Color.GREEN);
                         break;
-            case 7:     gc.fillRoundRect(40, 30, 300, 20, 10, 10);
+            case 7:     gallows3.setFill(Color.GREEN);
                         break;
-            case 6:     gc.setLineWidth(10);
-                        gc.strokeLine(95, 90, 175, 30);
+            case 6:     gallows4.setStroke(Color.GREEN);
                         break;
-            case 5:     gc.setLineWidth(10);
-                        gc.strokeLine(245, 35, 245, 90);
-                        gc.fillOval(215,90,60,60);
+            case 5:     gallows5.setStroke(Color.GREEN);
+                        head.setFill(Color.GREEN);
                         break;
-            case 4:     gc.fillOval(210,145,70,100);
+            case 4:     stomach.setFill(Color.GREEN);
                         break;
-            case 3:     gc.setLineWidth(18);
-                        if(!jumping) gc.strokeLine(230, 162, 190, 200);
-                        else gc.strokeLine(230, 162, 170, 160);
+            case 3:     leftArm.setStroke(Color.GREEN);
                         break;
-            case 2:     gc.setLineWidth(18);
-                        if(!jumping) gc.strokeLine(300, 200, 260, 162);
-                        else gc.strokeLine(320, 162, 260, 160);
+            case 2:     rightArm.setStroke(Color.GREEN);
                         break;
-            case 1:     gc.setLineWidth(18);
-                        if(!jumping) gc.strokeLine(230, 240, 220, 280);
-                        else gc.strokeLine(230, 235, 180, 255);
+            case 1:     leftLeg.setStroke(Color.GREEN);
                         break;
-            case 0:     gc.setLineWidth(18);
-                        if(!jumping) gc.strokeLine(260, 240, 270, 280);
-                        else gc.strokeLine(260, 235, 310, 255);
+            case 0:     rightLeg.setStroke(Color.GREEN);
                         break;
             default:
                         break;
@@ -381,16 +391,27 @@ public class GameViewController {
         changeButtonsState(false);
         game = new Game(level, category);
 
+        drawGrayHangman();
+
         if (game.deserialize()) {
             System.out.println("Udana deseralizacja");
             guessPasswordField.setText(String.valueOf(game.getUnknownWord()));
             leftChanceLabel.setText(Integer.toString(game.getHearths()));
+            for(int i=9; i>=game.getHearths(); i--) {
+                drawColourfulHangman(i);
+            }
             changeButtonsState(true);
             changeButtonStateAfterDeserialization(false);
         } else {
             changeButtonsState(false);
             System.out.println("Nic do deserializacji");
         }
+//
+//        if(game.getHearths()>0){
+//            for (int i=10; i==game.getHearths(); i--){
+//                drawColourfulHangman(i);
+//            }
+//        }
 
         switch (category){
             case ALL:       passwordCategory.setText("Wszystkie");
@@ -411,9 +432,6 @@ public class GameViewController {
                             break;
         }
 
-        gc = hangmanCanvas.getGraphicsContext2D();
-        drawGrayHangman(gc, false);
-
         assert keyboardPane != null : "fx:id=\"keyboardPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
         assert passwordPane != null : "fx:id=\"passwordPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
         assert guessPasswordField != null : "fx:id=\"guessPasswordField\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
@@ -425,44 +443,73 @@ public class GameViewController {
     }
 
     @FXML
-    void jumpingJackAction(ActionEvent event) throws Exception{
+    void jumpingJackClicked(MouseEvent event){
+
+        List<Line> lines = new ArrayList<>();
+        leftArm.setStrokeWidth(18);
+        lines.add(leftArm);
+        rightArm.setStrokeWidth(18);
+        lines.add(rightArm);
+        leftLeg.setStrokeWidth(18);
+        lines.add(leftLeg);
+        rightLeg.setStrokeWidth(18);
+        lines.add(rightLeg);
+
+        List<Line> JumpingLines = new ArrayList<>();
+        leftArmJ.setStrokeWidth(18);
+        leftArmJ.setStroke(leftArm.getStroke());
+        JumpingLines.add(leftArmJ);
+        rightArmJ.setStrokeWidth(18);
+        rightArmJ.setStroke(rightArm.getStroke());
+        JumpingLines.add(rightArmJ);
+        leftLegJ.setStrokeWidth(18);
+        leftLegJ.setStroke(leftLeg.getStroke());
+        JumpingLines.add(leftLegJ);
+        rightLegJ.setStrokeWidth(18);
+        rightLegJ.setStroke(rightLeg.getStroke());
+        JumpingLines.add(rightLegJ);
 
         Timeline timeline = new Timeline();
-        Duration timepoint = Duration.ZERO ;
-        Duration pause = Duration.seconds(5);
+        Duration timepoint = Duration.ZERO;
+        Duration pause = Duration.millis(500);
 
-        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-        drawGrayHangman(gc, true);
-        timepoint = timepoint.add(pause);
-        KeyFrame initial1 = new KeyFrame(timepoint, e -> hangedManPane.getChildren());
-        timeline.getKeyFrames().add(initial1);
+        KeyFrame keyFrameStomachRem;
+        KeyFrame keyFrameStomachAdd;
 
-        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-        drawGrayHangman(gc, false);
         timepoint = timepoint.add(pause);
-        KeyFrame initial2 = new KeyFrame(timepoint);
-        timeline.getKeyFrames().add(initial2);
-////
-//        gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-//        drawGrayHangman(gc, false);
-//        timeline.getKeyFrames().add(initial1);
+
+        for (Line line : lines) {
+            KeyFrame keyFrame = new KeyFrame(timepoint, e -> hangedManPane.getChildren().remove(line));
+            timeline.getKeyFrames().add(keyFrame);
+        }
+
+        for (Line line : JumpingLines) {
+            KeyFrame keyFrame = new KeyFrame(timepoint, e -> hangedManPane.getChildren().add(line));
+            timeline.getKeyFrames().add(keyFrame);
+        }
+
+        keyFrameStomachRem = new KeyFrame(timepoint, e -> hangedManPane.getChildren().remove(stomach));
+        timeline.getKeyFrames().add(keyFrameStomachRem);
+        keyFrameStomachAdd = new KeyFrame(timepoint, e -> hangedManPane.getChildren().add(stomach));
+        timeline.getKeyFrames().add(keyFrameStomachAdd);
+
+        timepoint = timepoint.add(pause);
+
+        for (Line line : JumpingLines) {
+            KeyFrame keyFrame = new KeyFrame(timepoint, e -> hangedManPane.getChildren().remove(line));
+            timeline.getKeyFrames().add(keyFrame);
+        }
+
+        for (Line line : lines) {
+            KeyFrame keyFrame = new KeyFrame(timepoint, e -> hangedManPane.getChildren().add(line));
+            timeline.getKeyFrames().add(keyFrame);
+        }
+        keyFrameStomachRem = new KeyFrame(timepoint, e -> hangedManPane.getChildren().remove(stomach));
+        timeline.getKeyFrames().add(keyFrameStomachRem);
+        keyFrameStomachAdd = new KeyFrame(timepoint, e -> hangedManPane.getChildren().add(stomach));
+        timeline.getKeyFrames().add(keyFrameStomachAdd);
 
         timeline.play();
-
-
-//            Thread.sleep(1000L);
-//            TimeUnit.SECONDS.sleep(1);
-//
-//            gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-//            drawGrayHangman(gc, true);
-//            System.out.println("koniec");
-//
-//            TimeUnit.SECONDS.sleep(1);
-////            Thread.sleep(1000L);
-//            gc.clearRect(0, 0, gc.getCanvas().getWidth(), gc.getCanvas().getHeight());
-//            drawGrayHangman(gc, false);
-//            System.out.println("koniec");
-
     }
 
 
@@ -510,7 +557,7 @@ public class GameViewController {
     private void afterClickedOnLetter(Character character) {
         game.selectedLetter(character);
         checkIfContinue();
-        drawColourfulHangman(gc, game.getHearths(), false);
+        drawColourfulHangman(game.getHearths());
     }
 
     private void checkIfContinue() {

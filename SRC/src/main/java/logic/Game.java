@@ -93,7 +93,7 @@ public class Game {
             inGame = false;
             return true;
         } else {
-            hangManEntity.decrementLives();
+            hangManEntity.setLivesToZero();
             return false;
         }
     }

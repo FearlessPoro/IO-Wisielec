@@ -6,9 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -21,9 +19,11 @@ import logic.Category;
 import logic.Game;
 import logic.LevelDifficulty;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class GameViewController {
@@ -75,8 +75,8 @@ public class GameViewController {
     @FXML
     private Label passwordCategory;
 
-    @FXML
-    private Button jumpingJackButton;
+    private Alert alert;
+    private DialogPane dialog;
 
     //shapes
     private Rectangle gallows1 = new Rectangle(50, 310, 140, 20);
@@ -308,6 +308,31 @@ public class GameViewController {
         Z.setDisable(true);
     }
 
+    private void initAlert() {
+        alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Informacja");
+        alert.setHeaderText(null);
+        ((Button) alert.getDialogPane().lookupButton(ButtonType.OK)).setText("Powrót do menu głównego");
+        dialog = alert.getDialogPane();
+        if(HangmanDelegate.nightModeOn)
+            dialog.getStylesheets().add("stylesheet/nightStyle.css");
+        else
+            dialog.getStylesheets().add("stylesheet/dayStyle.css");
+    }
+
+    private void showMessageAboutResultAndReturnToMenu(String message){
+
+        alert.setContentText(message);
+        Optional<ButtonType> result = alert.showAndWait();
+        try{
+            if (result.get() == ButtonType.OK){
+                HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/mainView.fxml")));
+            }
+        }
+        catch (IOException e) {}
+    }
+
+
     private void drawGrayHangman(){
 
         gallows5.setStrokeWidth(10);
@@ -392,6 +417,7 @@ public class GameViewController {
         game = new Game(level, category);
 
         drawGrayHangman();
+        initAlert();
 
         if (game.deserialize()) {
             System.out.println("Udana deseralizacja");
@@ -406,12 +432,7 @@ public class GameViewController {
             changeButtonsState(false);
             System.out.println("Nic do deserializacji");
         }
-//
-//        if(game.getHearths()>0){
-//            for (int i=10; i==game.getHearths(); i--){
-//                drawColourfulHangman(i);
-//            }
-//        }
+
 
         switch (category){
             case ALL:       passwordCategory.setText("Wszystkie");
@@ -527,10 +548,10 @@ public class GameViewController {
     @FXML
     void checkPasswordAction(ActionEvent event) {
         String wholePassword = wholePasswordField.getText();
+
         if (game.checkWholeWord(wholePassword)) {
-            guessPasswordField.setFont(Font.font("Verdana", 20));
-            guessPasswordField.setText(String.valueOf(game.takeEndMessage()));
             changeButtonsState(false);
+            showMessageAboutResultAndReturnToMenu(game.takeEndMessage());
         } else {
             checkIfContinue();
         }
@@ -565,9 +586,11 @@ public class GameViewController {
         leftChanceLabel.setText(Integer.toString(game.getHearths()));
 
         if (!game.canPlay()) {
-            guessPasswordField.setFont(Font.font("Verdana", 20));
-            guessPasswordField.setText(String.valueOf(game.takeEndMessage()));
             changeButtonsState(false);
+            for(int i=0; i<=9; i++){
+                drawColourfulHangman(i);
+            }
+            showMessageAboutResultAndReturnToMenu(game.takeEndMessage());
         }
     }
 

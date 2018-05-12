@@ -18,6 +18,8 @@ public class HangManEntity implements Serializable {
         this.hearths--;
     }
 
+    public void setLivesToZero() { this.hearths = 0; }
+
     public boolean isAlive() {
         return hearths > 0;
     }

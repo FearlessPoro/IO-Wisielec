@@ -28,3 +28,18 @@
     -fx-padding: 2 10 2 10;
 }
 
+.dialog-pane {
+    -fx-background-color:  linear-gradient(gold , whitesmoke);
+}
+
+.dialog-pane .label {
+    -fx-text-fill: black;
+}
+
+.dialog-pane .button {
+    -fx-background-color:  linear-gradient(greenyellow   , limegreen );
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 1 10 1 10;
+}

@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -47,7 +48,8 @@ public class RankEntity implements Serializable {
     }
 
     public static void serialize(RankEntity rank) {
-        try (FileOutputStream fileOut = new FileOutputStream("src/main/resources/rank.ser");
+        String dir = RankEntity.class.getResource("/").getFile();
+        try (FileOutputStream fileOut = new FileOutputStream(dir + "/rank.ser");
              ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
             out.writeObject(rank);
         } catch (IOException i) {
@@ -58,10 +60,12 @@ public class RankEntity implements Serializable {
     public static RankEntity deserialize() {
         RankEntity rank = new RankEntity();
 
-        File f = new File("src/main/resources/rank.ser");
+        URL url = RankEntity.class.getResource("/rank.ser");
+        String dir = url != null ? url.getFile() : "";
+        File f = new File(dir);
 
         if (f.exists() && !f.isDirectory()) {
-            try (FileInputStream fileIn = new FileInputStream("src/main/resources/rank.ser");
+            try (FileInputStream fileIn = new FileInputStream(dir);
                  ObjectInputStream in = new ObjectInputStream(fileIn)) {
                 rank = (RankEntity) in.readObject();
                 clearSaves();
@@ -74,7 +78,10 @@ public class RankEntity implements Serializable {
     }
 
     private static void clearSaves() {
-        File f = new File("src/main/resources/rank.ser");
+
+        URL url = RankEntity.class.getResource("/rank.ser");
+        String dir = url != null ? url.getFile() : "";
+        File f = new File(dir);
         if (f.exists() && !f.isDirectory()) {
             if (f.delete()) {
                 System.out.println("Usunieto save");

@@ -33,20 +33,24 @@ public class WordEntity implements Serializable {
     }
 
     public boolean alreadySelectedLetter(Character character) {
-        return selectedLetters.contains(character);
+        char lowerCaseCharacter = character.toString().toLowerCase().charAt(0);
+        return selectedLetters.contains(lowerCaseCharacter);
     }
 
     public void addToAlreadySelectedLetter(Character character) {
-        selectedLetters.add(character);
+        char lowerCaseCharacter = character.toString().toLowerCase().charAt(0);
+        selectedLetters.add(lowerCaseCharacter);
     }
 
     public boolean doesTheWordToGuessContainsLetter(char character) {
-        return wordToGuess.contains(String.valueOf(character));
+        String charToCompareLowerCase = String.valueOf(character).toLowerCase();
+        return wordToGuess.toLowerCase().contains(charToCompareLowerCase);
     }
 
     public void revealAllDuplicatesIfWordToGuessContainsLetter(char character) {
+        char lowerCaseCharacter = String.valueOf(character).toLowerCase().charAt(0);
         for (int i = 0; i < wordToGuess.length(); i++) {
-            if (wordToGuess.charAt(i) == character) {
+            if (wordToGuess.toLowerCase().charAt(i) == lowerCaseCharacter) {
                 revealLetter(i);
             }
         }

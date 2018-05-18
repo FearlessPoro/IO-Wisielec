@@ -23,6 +23,10 @@ public class Game {
         this.rank = rank;
     }
 
+    public GameTypes getType() {
+        return type;
+    }
+
     private RankEntity rank;
 
     public Game(LevelDifficulty level, Category category, GameTypes type) {

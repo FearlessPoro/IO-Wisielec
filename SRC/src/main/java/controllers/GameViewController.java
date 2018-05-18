@@ -1,5 +1,6 @@
 package controllers;
 
+import entity.RankEntity;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -17,6 +18,7 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 import logic.Category;
 import logic.Game;
+import logic.GameTypes;
 import logic.LevelDifficulty;
 
 import java.io.IOException;
@@ -30,6 +32,7 @@ public class GameViewController {
 
     static LevelDifficulty level = LevelDifficulty.EASY;
     static Category category = Category.ALL;
+    static GameTypes type = GameTypes.NEW_GAME;
 
     private Game game;
 
@@ -414,7 +417,8 @@ public class GameViewController {
     void initialize() {
 
         changeButtonsState(false);
-        game = new Game(level, category);
+        game = new Game(level, category, type);
+        game.setRank(RankEntity.deserialize());
 
         drawGrayHangman();
         initAlert();

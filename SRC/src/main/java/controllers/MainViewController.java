@@ -2,13 +2,11 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.image.Image;
+import logic.GameTypes;
 
 public class MainViewController {
 
@@ -39,11 +37,13 @@ public class MainViewController {
 
     @FXML
     void newGameAction(ActionEvent event) throws Exception {
+        GameViewController.type = GameTypes.NEW_GAME;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameMode.fxml")));
     }
 
     @FXML
     void restoreGameAction(ActionEvent event) throws Exception{
+        GameViewController.type = GameTypes.RESTORED_GAME;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameView.fxml")));
     }
 

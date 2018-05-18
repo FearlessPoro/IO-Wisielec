@@ -6,6 +6,7 @@ import entity.RankEntity;
 import entity.WordEntity;
 
 import java.io.*;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -15,24 +16,29 @@ public class Game {
     private boolean inGame = false;
     private LevelDifficulty level;
     private Category category;
+    private GameTypes type;
     private int secondsLeft = 0;
+
+    public void setRank(RankEntity rank) {
+        this.rank = rank;
+    }
+
     private RankEntity rank;
 
-    public Game(LevelDifficulty level, Category category) {
+    public Game(LevelDifficulty level, Category category, GameTypes type) {
         this.level = level;
         this.category = category;
+        this.type = type;
 
         SoundEffect.init();
     }
 
     public void start() {
         inGame = true;
-        Path path = Paths.get("src/main/resources", "database/sample.csv");
-        wordEntity = new CsvDao(path).getRandomWord();
+        wordEntity = new CsvDao("sample.csv").getRandomWord();
         hangManEntity = new HangManEntity();
-
-        rank = RankEntity.deserialize();
     }
+
 
     public boolean checkIfInGame() {
         return inGame;
@@ -77,10 +83,13 @@ public class Game {
             SoundEffect.GAME_WON.play();
             rank.addToRank(calculatePoints(), wordEntity.getWordToGuess());
             RankEntity.serialize(rank);
-            return "Congratulations! Guessed word: " + wordEntity.getWordToGuess() + ". You win and you still have " + hangManEntity.getHearths() + " more lives.";
+            if (type == GameTypes.RESTORED_GAME) {
+                clearSaves();
+            };
+            return "Gratulacje! Słowo do odgadnięcia: " + wordEntity.getWordToGuess() + ".\nWygrałeś oraz masz wciąż " + hangManEntity.getHearths() + " żyć.";
         } else {
             SoundEffect.GAME_LOST.play();
-            return "No more lives. You lose!" + "The word to guess was: \"" + wordEntity.getWordToGuess() + "\".";
+            return "Straciłeś wszystkie życia. Przegrywasz! " + "\nSłowo do odgadnięcia: \"" + wordEntity.getWordToGuess() + "\".";
         }
     }
 
@@ -89,7 +98,7 @@ public class Game {
     }
 
     public boolean checkWholeWord(String wholeWord) {
-        if (wholeWord.equals(wordEntity.getWordToGuess())) {
+        if (wholeWord.equalsIgnoreCase(wordEntity.getWordToGuess())) {
             inGame = false;
             return true;
         } else {
@@ -99,7 +108,8 @@ public class Game {
     }
 
     public void serialize() {
-        try (FileOutputStream fileOut = new FileOutputStream("src/main/resources/game.ser");
+        String dir = RankEntity.class.getResource("/").getFile();
+        try (FileOutputStream fileOut = new FileOutputStream(dir + "/game.ser", false);
              ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
             out.writeObject(wordEntity);
             out.writeObject(hangManEntity);
@@ -109,10 +119,12 @@ public class Game {
     }
 
     public boolean deserialize() {
-        File f = new File("src/main/resources/game.ser");
+        URL url = RankEntity.class.getResource("/game.ser");
+        String dir = url != null ? url.getFile() : "";
+        File f = new File(dir);
 
-        if (f.exists() && !f.isDirectory()) {
-            try (FileInputStream fileIn = new FileInputStream("src/main/resources/game.ser");
+        if (f.exists() && !f.isDirectory() && type == GameTypes.RESTORED_GAME) {
+            try (FileInputStream fileIn = new FileInputStream(dir);
                  ObjectInputStream in = new ObjectInputStream(fileIn)) {
                 wordEntity = (WordEntity) in.readObject();
                 hangManEntity = (HangManEntity) in.readObject();
@@ -129,8 +141,10 @@ public class Game {
         return false;
     }
 
-    private void clearSaves() {
-        File f = new File("src/main/resources/game.ser");
+    public void clearSaves() {
+        URL url = RankEntity.class.getResource("/game.ser");
+        String dir = url != null ? url.getFile() : "";
+        File f = new File(dir);
         if (f.exists() && !f.isDirectory()) {
             if (f.delete()) {
                 System.out.println("Usunieto save");

@@ -15,8 +15,7 @@ public class CsvDaoTest {
 
     @Before
     public void setUp() {
-        Path path = Paths.get("src/test/resources", "sample.csv");
-        testDao = new CsvDao(path);
+        testDao = new CsvDao("sample.csv");
     }
 
     @Test

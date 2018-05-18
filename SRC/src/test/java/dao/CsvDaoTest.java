@@ -20,11 +20,12 @@ public class CsvDaoTest {
     }
 
     @Test
-    public void readsRecords() {
+    public void readsRecordsTest() {
         List<List<String>> records = testDao.readRecords();
 
         Assert.assertEquals(2, records.size());
         Assert.assertTrue(records.contains(Arrays.asList("word1", "word2")));
         Assert.assertTrue(records.contains(Arrays.asList("word3", "word4")));
     }
+
 }

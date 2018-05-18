@@ -14,7 +14,7 @@ public class HangManEntityTest {
     }
 
     @Test
-    public void getHearths() {
+    public void getHearthsTest() {
         int expectedLives = 10;
 
         int resultLives = testEntity.getHearths();
@@ -23,7 +23,7 @@ public class HangManEntityTest {
     }
 
     @Test
-    public void decrementLives() {
+    public void decrementLivesTest() {
         int expectedLives = 9;
 
         testEntity.decrementLives();
@@ -33,14 +33,14 @@ public class HangManEntityTest {
     }
 
     @Test
-    public void isAlive() {
+    public void isAliveTest() {
         boolean isAlive = testEntity.isAlive();
 
         Assert.assertTrue(isAlive);
     }
 
     @Test
-    public void isDead() {
+    public void isDeadTest() {
         for (int i = 0; i < 10; i++) {
             testEntity.decrementLives();
         }

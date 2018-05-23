@@ -576,6 +576,9 @@ public class GameViewController {
 
     @FXML
     void giveUpAction(ActionEvent event) throws Exception{
+        if (game.getType().equals(GameTypes.RESTORED_GAME)) {
+            game.clearSaves();
+        }
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/mainView.fxml")));
     }
 

@@ -81,6 +81,9 @@ public class GameViewController {
     private Alert alert;
     private DialogPane dialog;
 
+    @FXML
+    private Label clockLabel;
+
     //shapes
     private Rectangle gallows1 = new Rectangle(50, 310, 140, 20);
     private Rectangle gallows2 = new Rectangle(100, 20, 20, 300);

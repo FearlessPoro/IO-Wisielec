@@ -30,16 +30,22 @@
 
 .dialog-pane {
     -fx-background-color:  linear-gradient(gold , whitesmoke);
+    -fx-pref-height: 150px;
+    -fx-pref-width: 600px;
 }
 
 .dialog-pane .label {
     -fx-text-fill: black;
+    -fx-font-size: 23px;
 }
 
 .dialog-pane .button {
     -fx-background-color:  linear-gradient(greenyellow   , limegreen );
     -fx-text-fill: black;
     -fx-font-weight: bold;
-    -fx-font-size: 13px;
+    -fx-font-size: 20px;
     -fx-padding: 1 10 1 10;
+    -fx-pref-width: 350px;
+    -fx-pref-height: 30px;
 }
+

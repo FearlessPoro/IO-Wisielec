@@ -258,6 +258,11 @@
                            </font>
                         </Button>
                      </children></Pane>
+                  <Label fx:id="clockLabel" disable="true" layoutX="768.0" layoutY="427.0" prefHeight="140.0" prefWidth="129.0" text="60">
+                     <font>
+                        <Font size="91.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
         </content>
       </ScrollPane>

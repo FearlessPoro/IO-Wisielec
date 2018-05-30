@@ -17,6 +17,8 @@ public class HangMan extends Application {
 
         HangmanDelegate.root.getStylesheets().add("stylesheet/dayStyle.css");
 
+        stage.setMaxWidth(950);
+        stage.setMaxHeight(638);
         stage.setScene(scene);
         stage.show();
     }

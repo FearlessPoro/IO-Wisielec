@@ -21,5 +21,4 @@ public class RankEntityTest {
         testEntity.addToRank(testPoints, testWord);
         Assert.assertEquals(testEntity.getScoreAtSpecificIndex(0), testRecord);
     }
-
 }

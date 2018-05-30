@@ -4,6 +4,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.File;
+
 public class RankEntityTest {
 
     private RankEntity testEntity;
@@ -21,4 +23,17 @@ public class RankEntityTest {
         testEntity.addToRank(testPoints, testWord);
         Assert.assertEquals(testEntity.getScoreAtSpecificIndex(0), testRecord);
     }
+
+    @Test
+    public void serializeTest() {
+        RankEntity.serialize(testEntity);
+        File file = new File(RankEntity.class.getResource("/rank.ser").getFile());
+        Assert.assertTrue(file.exists());
+    }
+
+    @Test
+    public void deserializeTest() {
+        Assert.assertEquals(testEntity, RankEntity.deserialize());
+    }
+
 }

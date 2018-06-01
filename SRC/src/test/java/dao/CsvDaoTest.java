@@ -4,8 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
@@ -15,8 +13,8 @@ public class CsvDaoTest {
 
     @Before
     public void setUp() {
-        Path path = Paths.get("src/test/resources", "sample.csv");
-        testDao = new CsvDao(path.toString());
+        String path = "sample.csv";
+        testDao = new CsvDao(path);
     }
 
     @Test

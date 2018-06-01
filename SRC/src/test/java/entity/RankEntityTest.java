@@ -33,7 +33,12 @@ public class RankEntityTest {
 
     @Test
     public void deserializeTest() {
-        Assert.assertEquals(testEntity, RankEntity.deserialize());
+        RankEntity deserializedEntity = RankEntity.deserialize();
+
+        for(int i = 0; i < testEntity.getNumberOfRecords(); ++i) {
+            Assert.assertEquals(testEntity.getScoreAtSpecificIndex(i),
+                    deserializedEntity.getScoreAtSpecificIndex(i));
+        }
     }
 
 }

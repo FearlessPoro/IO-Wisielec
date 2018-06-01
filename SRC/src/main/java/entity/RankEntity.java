@@ -52,6 +52,10 @@ public class RankEntity implements Serializable {
         return rank.get(index);
     }
 
+    public int  getNumberOfRecords() {
+        return rank.size();
+    }
+
     public static void serialize(RankEntity rank) {
         String dir = RankEntity.class.getResource("/").getFile();
         try (FileOutputStream fileOut = new FileOutputStream(dir + "/rank.ser");

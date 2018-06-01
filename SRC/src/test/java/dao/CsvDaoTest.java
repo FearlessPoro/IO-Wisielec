@@ -16,11 +16,11 @@ public class CsvDaoTest {
     @Before
     public void setUp() {
         Path path = Paths.get("src/test/resources", "sample.csv");
-        testDao = new CsvDao(path);
+        testDao = new CsvDao(path.toString());
     }
 
     @Test
-    public void readsRecordsTest() {
+    public void readRecordsTest() {
         List<List<String>> records = testDao.readRecords();
 
         Assert.assertEquals(2, records.size());

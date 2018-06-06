@@ -63,4 +63,6 @@ public class WordEntity implements Serializable {
     private void revealLetter(int index) {
         unknownWord[index] = wordToGuess.charAt(index);
     }
+
+
 }

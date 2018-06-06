@@ -25,7 +25,7 @@ public class CsvDaoTest {
     public void readRecordsTest() {
         List<List<String>> records = testDao.readRecords();
 
-        Assert.assertEquals(21, records.size());
+        Assert.assertEquals(19, records.size());
     }
 
 }

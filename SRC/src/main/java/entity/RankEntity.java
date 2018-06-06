@@ -1,5 +1,7 @@
 package entity;
 
+import logic.Game;
+
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -9,6 +11,8 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class RankEntity implements Serializable {
+
+    //private static final long serialVersionUID = 1L;
 
     static class Record implements Serializable {
         Integer points;
@@ -32,6 +36,12 @@ public class RankEntity implements Serializable {
         public int hashCode() {
             return Objects.hash(points, wordToGuess);
         }
+
+        @Override
+        public String toString() {
+
+            return " Słowo: \"" + this.wordToGuess + "\" Punkty: " + this.points ;
+        }
     }
 
     private List<Record> rank =
@@ -52,14 +62,14 @@ public class RankEntity implements Serializable {
         return rank.get(index);
     }
 
-    public int  getNumberOfRecords() {
+    public int getNumberOfRecords() {
         return rank.size();
     }
 
     public static void serialize(RankEntity rank) {
         String dir = RankEntity.class.getResource("/").getFile();
         try (FileOutputStream fileOut = new FileOutputStream(dir + "/rank.ser");
-             ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+            ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
             out.writeObject(rank);
         } catch (IOException i) {
             i.printStackTrace();
@@ -75,19 +85,19 @@ public class RankEntity implements Serializable {
 
         if (f.exists() && !f.isDirectory()) {
             try (FileInputStream fileIn = new FileInputStream(dir);
-                 ObjectInputStream in = new ObjectInputStream(fileIn)) {
+                ObjectInputStream in = new ObjectInputStream(fileIn)) {
                 rank = (RankEntity) in.readObject();
+                fileIn.close();
+                in.close();
                 clearSaves();
             } catch (IOException | ClassNotFoundException i) {
                 i.printStackTrace();
             }
         }
-
         return rank;
     }
 
     private static void clearSaves() {
-
         URL url = RankEntity.class.getResource("/rank.ser");
         String dir = url != null ? url.getFile() : "";
         File f = new File(dir);
@@ -96,5 +106,18 @@ public class RankEntity implements Serializable {
                 System.out.println("Usunieto save");
             }
         }
+
+    }
+
+    @Override
+    public String toString() {
+        String temp = "";
+        if (rank.isEmpty()) {
+            return temp;
+        }
+        for (int i =0; i< rank.size(); ++i) {
+            temp += "Pozycja: " + (i+1)%10 + rank.get(i) + " \n";
+        }
+        return temp;
     }
 }

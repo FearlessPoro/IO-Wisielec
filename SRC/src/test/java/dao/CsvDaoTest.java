@@ -1,5 +1,7 @@
 package dao;
 
+import logic.Category;
+import logic.LevelDifficulty;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,16 +16,16 @@ public class CsvDaoTest {
     @Before
     public void setUp() {
         String path = "sample.csv";
-        testDao = new CsvDao(path);
+        Category category = Category.SPORT;
+        LevelDifficulty level = LevelDifficulty.EASY;
+        testDao = new CsvDao(path, category, level);
     }
 
     @Test
     public void readRecordsTest() {
         List<List<String>> records = testDao.readRecords();
 
-        Assert.assertEquals(2, records.size());
-        Assert.assertTrue(records.contains(Arrays.asList("word1", "word2")));
-        Assert.assertTrue(records.contains(Arrays.asList("word3", "word4")));
+        Assert.assertEquals(21, records.size());
     }
 
 }

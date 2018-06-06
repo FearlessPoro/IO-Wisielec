@@ -6,8 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Label;
 import javafx.event.ActionEvent;
+import logic.Category;
 
 public class AddPasswordController {
+
+    static Category category = Category.ALL;
 
     @FXML
     private TextArea passwordToAddTextField;

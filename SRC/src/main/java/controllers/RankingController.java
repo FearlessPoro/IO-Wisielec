@@ -1,10 +1,12 @@
 package controllers;
 
+import entity.RankEntity;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextArea;
+import logic.Game;
 
 public class RankingController {
 
@@ -16,7 +18,10 @@ public class RankingController {
 
     @FXML
     void rankingTableAction(ActionEvent event) {
+    }
 
+    public void initialize() {
+        rankingTableTextArea.setText(Game.getRankEntity());
     }
 
     @FXML

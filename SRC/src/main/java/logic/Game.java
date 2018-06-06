@@ -19,15 +19,15 @@ public class Game {
     private GameTypes type;
     private int secondsLeft = 0;
 
-    public void setRank(RankEntity rank) {
-        this.rank = rank;
+    public static void setRank(RankEntity rank) {
+        Game.rank = rank;
     }
 
     public GameTypes getType() {
         return type;
     }
 
-    private RankEntity rank;
+    private static RankEntity rank;
 
     public Game(LevelDifficulty level, Category category, GameTypes type) {
         this.level = level;
@@ -39,7 +39,7 @@ public class Game {
 
     public void start() {
         inGame = true;
-        wordEntity = new CsvDao("sample.csv").getRandomWord();
+        wordEntity = new CsvDao("sample.csv", category, level).getRandomWord();
         hangManEntity = new HangManEntity();
     }
 
@@ -89,7 +89,7 @@ public class Game {
             RankEntity.serialize(rank);
             if (type == GameTypes.RESTORED_GAME) {
                 clearSaves();
-            };
+            }
             return "Gratulacje! Słowo do odgadnięcia: " + wordEntity.getWordToGuess() + ".\nWygrałeś oraz masz wciąż " + hangManEntity.getHearths() + " żyć.";
         } else {
             SoundEffect.GAME_LOST.play();
@@ -106,7 +106,7 @@ public class Game {
             inGame = false;
             return true;
         } else {
-            hangManEntity.setLivesToZero();
+            hangManEntity.decrementLives();
             return false;
         }
     }
@@ -114,7 +114,7 @@ public class Game {
     public void serialize() {
         String dir = RankEntity.class.getResource("/").getFile();
         try (FileOutputStream fileOut = new FileOutputStream(dir + "/game.ser", false);
-             ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
+            ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
             out.writeObject(wordEntity);
             out.writeObject(hangManEntity);
         } catch (IOException i) {
@@ -129,10 +129,11 @@ public class Game {
 
         if (f.exists() && !f.isDirectory() && type == GameTypes.RESTORED_GAME) {
             try (FileInputStream fileIn = new FileInputStream(dir);
-                 ObjectInputStream in = new ObjectInputStream(fileIn)) {
+                ObjectInputStream in = new ObjectInputStream(fileIn)) {
                 wordEntity = (WordEntity) in.readObject();
                 hangManEntity = (HangManEntity) in.readObject();
-
+                fileIn.close();
+                in.close();
                 inGame = true;
                 clearSaves();
 
@@ -156,4 +157,7 @@ public class Game {
         }
     }
 
+    public static String getRankEntity() {
+        return rank.toString();
+    }
 }

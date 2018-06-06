@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Line;
@@ -327,8 +328,9 @@ public class GameViewController {
     }
 
     private void showMessageAboutResultAndReturnToMenu(String message){
-
         alert.setContentText(message);
+        alert.getDialogPane().getChildren().stream().filter(node -> node instanceof Label).forEach(node -> ((Label)node).setMinHeight(Region.USE_PREF_SIZE));
+
         Optional<ButtonType> result = alert.showAndWait();
         try{
             if (result.get() == ButtonType.OK){
@@ -421,7 +423,6 @@ public class GameViewController {
 
         changeButtonsState(false);
         game = new Game(level, category, type);
-        game.setRank(RankEntity.deserialize());
 
         drawGrayHangman();
         initAlert();
@@ -436,6 +437,7 @@ public class GameViewController {
             changeButtonsState(true);
             changeButtonStateAfterDeserialization(false);
         } else {
+
             changeButtonsState(false);
             System.out.println("Nic do deserializacji");
         }
@@ -579,9 +581,10 @@ public class GameViewController {
 
     @FXML
     void giveUpAction(ActionEvent event) throws Exception{
-        if (game.getType().equals(GameTypes.RESTORED_GAME)) {
+        //not necessary i think
+        /*if (game.getType().equals(GameTypes.RESTORED_GAME)) {
             game.clearSaves();
-        }
+        }*/
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/mainView.fxml")));
     }
 

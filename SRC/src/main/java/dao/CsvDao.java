@@ -24,6 +24,7 @@ public class CsvDao {
         setSourcePath(fileName);
         setCategory(category);
         setLevelDifficulty(level);
+        setFileName(fileName);
     }
 
     public CsvDao(String fileName, Category category) {
@@ -110,7 +111,7 @@ public class CsvDao {
                 return "Nieprawidlowa dlugosc hasla";
             } else {
                 if (!newPasswordToAdd.matches("[a-zA-Z\\s]*")){
-                    return "Nieprawidlowa dlugosc hasla";
+                    return "Haslo musi skladac sie z liter";
                 } else {
                     addPassword(passwordToAdd);
                     return "Haslo dodane do bazy";

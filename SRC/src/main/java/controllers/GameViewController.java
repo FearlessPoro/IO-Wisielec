@@ -320,6 +320,14 @@ public class GameViewController {
         alert.setHeaderText(null);
         ((Button) alert.getDialogPane().lookupButton(ButtonType.OK)).setText("Powrót do menu głównego");
         dialog = alert.getDialogPane();
+
+        alert.setOnCloseRequest(event -> {
+            try {
+                HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/mainView.fxml")));
+            }
+            catch (Exception e){}
+        });
+
         if(HangmanDelegate.nightModeOn)
             dialog.getStylesheets().add("stylesheet/nightStyle.css");
         else

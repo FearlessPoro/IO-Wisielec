@@ -1,8 +1,11 @@
 package controllers;
 
 import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -21,18 +24,21 @@ import logic.Game;
 import logic.GameTypes;
 import logic.LevelDifficulty;
 
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class GameViewController {
 
     static LevelDifficulty level = LevelDifficulty.EASY;
     static Category category = Category.ALL;
     static GameTypes type = GameTypes.NEW_GAME;
+    static boolean timed = GameTypes.timed;
+    Timer secondsDecrement;
+    Timeline labelChange, endCall;
+
+
 
     private Game game;
 
@@ -73,7 +79,7 @@ public class GameViewController {
     private Button A, A1, B, C, C1, D, E, E1, F, G, H, I, J, K, L, L1, M, N, N1, O, O1, P, Q, R, S, S1, T, U, V, W, X, Y, Z, Z1, Z2;
 
     @FXML
-    private Button checkPassword, giveUpButton;
+    private Button checkPassword, giveUpButton, saveAndExitButton;
 
     @FXML
     private Label passwordCategory;
@@ -338,13 +344,17 @@ public class GameViewController {
         alert.setContentText(message);
         alert.getDialogPane().getChildren().stream().filter(node -> node instanceof Label).forEach(node -> ((Label)node).setMinHeight(Region.USE_PREF_SIZE));
 
-        Optional<ButtonType> result = alert.showAndWait();
-        try{
-            if (result.get() == ButtonType.OK){
-                HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/mainView.fxml")));
-            }
-        }
-        catch (IOException e) {}
+        secondsDecrement.cancel();
+        endCall.stop();
+        labelChange.stop();
+
+        alert.setOnHidden((event) -> {
+          try {
+              HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/mainView.fxml")));
+          }  catch (IOException e)
+          {e.printStackTrace();}
+        });
+        alert.show();
     }
 
 
@@ -425,14 +435,62 @@ public class GameViewController {
         }
     }
 
+    void initTimer()
+    {
+        clockLabel.setDisable(false);
+        clockLabel.setText("5");
+        int maxSeconds = game.getSecondsLeft();
+
+        secondsDecrement =new Timer();
+        secondsDecrement.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                game.decrementSecondsLeft();
+                System.out.println(game.getSecondsLeft());
+            }
+        }, 0, 1000);
+
+        labelChange = new Timeline();
+        labelChange.setCycleCount(maxSeconds);
+        labelChange.getKeyFrames().add(new KeyFrame(Duration.millis(1000),
+                new EventHandler<>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        clockLabel.setText(String.valueOf(game.getSecondsLeft()));
+                    }
+                }));
+        labelChange.play();
+
+        endCall = new Timeline();
+        endCall.getKeyFrames().add(new KeyFrame(Duration.millis(1000 * maxSeconds),
+                new EventHandler<>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        showMessageAboutResultAndReturnToMenu(game.takeEndMessage());
+                    }
+                }));
+        labelChange.play();
+        endCall.play();
+
+
+//        secondsDecrement.schedule(new TimerTask() {
+//            @Override
+//            public void run() {
+//
+//            }
+//        },maxSeconds * 1000);
+
+    }
+
     @FXML
     void initialize() {
 
-        //changeButtonsState(false);
-        game = new Game(level, category, type);
+        game = new Game(level, category, type, GameTypes.timed);
 
         drawGrayHangman();
         initAlert();
+
+
 
         if (game.deserialize()) {
             System.out.println("Udana deseralizacja");
@@ -445,7 +503,6 @@ public class GameViewController {
             changeButtonsState(true);
             changeButtonStateAfterDeserialization(false);
         } else {
-            //changeButtonsState(true);
 
             game.start();
 
@@ -471,6 +528,8 @@ public class GameViewController {
                             break;
             case LITERATURE:passwordCategory.setText("Literatura");
                             break;
+            case NATURE:    passwordCategory.setText("Natura");
+                            break;
             default:        passwordCategory.setText("Błąd");
                             break;
         }
@@ -483,6 +542,12 @@ public class GameViewController {
         assert winMessageLabel != null : "fx:id=\"winMessageLabel\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
         assert leftChanceLabel != null : "fx:id=\"leftChanceLabel\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
         assert buttonsPane != null : "fx:id=\"randomPasswordPane\" was not injected: check your FXML file 'controllers.Gui1.fxml'.";
+
+        if(GameTypes.timed)
+        {
+            saveAndExitButton.setDisable(true);
+            initTimer();
+        }
     }
 
     @FXML

@@ -33,6 +33,7 @@ public class AddPasswordController {
     private Button returnButton;
 
     private Alert alert;
+    private DialogPane dialog;
 
 
 
@@ -61,6 +62,12 @@ public class AddPasswordController {
         alert.setTitle("Informacja");
         alert.setHeaderText(null);
         ((Button) alert.getDialogPane().lookupButton(ButtonType.OK)).setText("OK");
+        dialog = alert.getDialogPane();
+
+        if(HangmanDelegate.nightModeOn)
+            dialog.getStylesheets().add("stylesheet/nightStyle.css");
+        else
+            dialog.getStylesheets().add("stylesheet/dayStyle.css");
     }
 
     @FXML

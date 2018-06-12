@@ -30,7 +30,7 @@
 
 .dialog-pane {
     -fx-background-color:  linear-gradient(gold , whitesmoke);
-    -fx-pref-height: 150px;
+    -fx-pref-height: 200px;
     -fx-pref-width: 600px;
 }
 
@@ -48,4 +48,6 @@
     -fx-pref-width: 350px;
     -fx-pref-height: 30px;
 }
+
+
 

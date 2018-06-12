@@ -28,7 +28,11 @@ public class CategoriesToAddPasswordController {
     private Button culinaryChooseButton;
 
     @FXML
+    private Button natureChooseButton;
+
+    @FXML
     private Button returnButton;
+
 
     @FXML
     void culinaryChooseAction(ActionEvent event) throws Exception{
@@ -63,6 +67,12 @@ public class CategoriesToAddPasswordController {
     @FXML
     void sportChooseAction(ActionEvent event) throws Exception{
         AddPasswordController.category = Category.SPORT;
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/addPassword.fxml")));
+    }
+
+    @FXML
+    void natureChooseAction(ActionEvent event) throws Exception{
+        AddPasswordController.category = Category.NATURE;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/addPassword.fxml")));
     }
 

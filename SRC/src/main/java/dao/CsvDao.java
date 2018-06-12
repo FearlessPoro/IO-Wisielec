@@ -99,7 +99,7 @@ public class CsvDao {
             }
         }
 
-        String record = "\n" + category.name() + SEPARATOR + LevelDifficulty.EASY.name() + SEPARATOR + passwordToAdd;
+        String record = "\n" + category.name() + SEPARATOR + level.name() + SEPARATOR + passwordToAdd;
         URL resourceUrl = getClass().getResource("/database/" + fileName);
         File file = new File(resourceUrl.toURI());
         OutputStream output = new FileOutputStream(file, true);

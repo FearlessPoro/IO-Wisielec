@@ -29,6 +29,9 @@ public class Game {
 
     private static RankEntity rank;
 
+    public void setLivesToZero() { hangManEntity.setLivesToZero(); }
+
+
     public Game(LevelDifficulty level, Category category, GameTypes type) {
         this.level = level;
         this.category = category;

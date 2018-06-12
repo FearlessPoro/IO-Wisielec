@@ -73,7 +73,7 @@ public class GameViewController {
     private Button A, A1, B, C, C1, D, E, E1, F, G, H, I, J, K, L, L1, M, N, N1, O, O1, P, Q, R, S, S1, T, U, V, W, X, Y, Z, Z1, Z2;
 
     @FXML
-    private Button checkPassword, randomPassword, giveUpButton;
+    private Button checkPassword, giveUpButton;
 
     @FXML
     private Label passwordCategory;
@@ -420,7 +420,7 @@ public class GameViewController {
     @FXML
     void initialize() {
 
-        changeButtonsState(false);
+        //changeButtonsState(false);
         game = new Game(level, category, type);
 
         drawGrayHangman();
@@ -437,8 +437,13 @@ public class GameViewController {
             changeButtonsState(true);
             changeButtonStateAfterDeserialization(false);
         } else {
+            //changeButtonsState(true);
 
-            changeButtonsState(false);
+            game.start();
+
+            guessPasswordField.setFont(Font.font("Verdana", 40));
+            guessPasswordField.setText(String.valueOf(game.getUnknownWord()));
+            leftChanceLabel.setText(Integer.toString(game.getHearths()));
             System.out.println("Nic do deserializacji");
         }
 
@@ -542,26 +547,15 @@ public class GameViewController {
         timeline.play();
     }
 
-
-    @FXML
-    void randomPasswordAction(ActionEvent event) {
-        changeButtonsState(true);
-
-        game.start();
-
-        guessPasswordField.setFont(Font.font("Verdana", 40));
-        guessPasswordField.setText(String.valueOf(game.getUnknownWord()));
-        leftChanceLabel.setText(Integer.toString(game.getHearths()));
-    }
-
     @FXML
     void checkPasswordAction(ActionEvent event) {
         String wholePassword = wholePasswordField.getText();
 
         if (game.checkWholeWord(wholePassword)) {
-            changeButtonsState(false);
+            //changeButtonsState(false);
             showMessageAboutResultAndReturnToMenu(game.takeEndMessage());
         } else {
+            game.setLivesToZero();
             checkIfContinue();
         }
     }
@@ -614,7 +608,6 @@ public class GameViewController {
             }
         }
         checkPassword.setDisable(!state);
-        randomPassword.setDisable(state);
     }
 
     private void changeButtonStateAfterDeserialization(Boolean state) {

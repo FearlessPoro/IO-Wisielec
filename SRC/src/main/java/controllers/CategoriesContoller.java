@@ -32,6 +32,9 @@ public class CategoriesContoller {
     private Button culinaryChooseButton;
 
     @FXML
+    private Button natureChooseButton;
+
+    @FXML
     private Button returnButton;
 
     @FXML
@@ -73,6 +76,12 @@ public class CategoriesContoller {
     @FXML
     void sportChooseAction(ActionEvent event) throws Exception {
         GameViewController.category = Category.SPORT;
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameView.fxml")));
+    }
+
+    @FXML
+    void natureChooseAction(ActionEvent event) throws Exception {
+        GameViewController.category = Category.NATURE;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameView.fxml")));
     }
 

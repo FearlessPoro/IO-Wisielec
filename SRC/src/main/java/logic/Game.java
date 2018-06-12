@@ -7,8 +7,6 @@ import entity.WordEntity;
 
 import java.io.*;
 import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class Game {
     private WordEntity wordEntity;
@@ -17,7 +15,8 @@ public class Game {
     private LevelDifficulty level;
     private Category category;
     private GameTypes type;
-    private int secondsLeft = 0;
+    private int secondsLeft = 60;
+    private boolean timedGame;
 
     public static void setRank(RankEntity rank) {
         Game.rank = rank;
@@ -31,12 +30,15 @@ public class Game {
 
     public void setLivesToZero() { hangManEntity.setLivesToZero(); }
 
+    public void decrementSecondsLeft(){ secondsLeft--; }
 
-    public Game(LevelDifficulty level, Category category, GameTypes type) {
+    public int getSecondsLeft(){ return secondsLeft; }
+
+    public Game(LevelDifficulty level, Category category, GameTypes type, boolean timed) {
         this.level = level;
         this.category = category;
         this.type = type;
-
+        this.timedGame = timed;
         SoundEffect.init();
     }
 
@@ -86,18 +88,24 @@ public class Game {
     }
 
     public String takeEndMessage() {
-        if (hangManEntity.isAlive()) {
-            SoundEffect.GAME_WON.play();
-            rank.addToRank(calculatePoints(), wordEntity.getWordToGuess());
-            RankEntity.serialize(rank);
-            if (type == GameTypes.RESTORED_GAME) {
-                clearSaves();
-            }
-            return "Gratulacje! Słowo do odgadnięcia: " + wordEntity.getWordToGuess() + ".\nWygrałeś oraz masz wciąż " + hangManEntity.getHearths() + " żyć.";
-        } else {
+        if(secondsLeft <= 0) {
             SoundEffect.GAME_LOST.play();
-            return "Straciłeś wszystkie życia. Przegrywasz! " + "\nSłowo do odgadnięcia: \"" + wordEntity.getWordToGuess() + "\".";
+            return "Czas się skończył! Przegrywasz! " + "\nSłowo do odgadnięcia: \"" + wordEntity.getWordToGuess() + "\".";
+        }else {
+            if (hangManEntity.isAlive()) {
+                SoundEffect.GAME_WON.play();
+                rank.addToRank(calculatePoints(), wordEntity.getWordToGuess());
+                RankEntity.serialize(rank);
+                if (type == GameTypes.RESTORED_GAME) {
+                    clearSaves();
+                }
+                return "Gratulacje! Słowo do odgadnięcia: " + wordEntity.getWordToGuess() + ".\nWygrałeś oraz masz wciąż " + hangManEntity.getHearths() + " żyć.";
+            }else {
+                SoundEffect.GAME_LOST.play();
+                return "Straciłeś wszystkie życia. Przegrywasz! " + "\nSłowo do odgadnięcia: \"" + wordEntity.getWordToGuess() + "\".";
+            }
         }
+
     }
 
     private int calculatePoints() {

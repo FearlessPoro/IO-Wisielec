@@ -428,6 +428,7 @@ public class GameViewController {
 
         if (game.deserialize()) {
             System.out.println("Udana deseralizacja");
+            guessPasswordField.setFont(Font.font("Verdana", 40));
             guessPasswordField.setText(String.valueOf(game.getUnknownWord()));
             leftChanceLabel.setText(Integer.toString(game.getHearths()));
             for(int i=9; i>=game.getHearths(); i--) {

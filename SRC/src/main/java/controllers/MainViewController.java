@@ -6,7 +6,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import logic.Game;
 import logic.GameTypes;
+
+import java.io.File;
 
 public class MainViewController {
 
@@ -76,4 +79,13 @@ public class MainViewController {
         }
     }
 
+    @FXML
+    void initialize() {
+        String dir = Game.class.getResource("/").getFile();
+        dir += "/game.ser";
+        File f = new File(dir);
+        if(!f.exists()) {
+            restoreGameButton.setDisable(true);
+        }
+    }
 }

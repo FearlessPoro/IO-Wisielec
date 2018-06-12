@@ -87,6 +87,18 @@ public class CsvDao {
 
     private void addPassword(String passwordToAdd) throws URISyntaxException, FileNotFoundException {
         System.out.println("probuje");
+
+        int passwordLength = passwordToAdd.length();
+        if (passwordLength >= 2 && passwordLength <= 8) {
+            level = LevelDifficulty.EASY;
+        } else {
+            if (passwordLength >= 9 && passwordLength <= 14 ){
+                level = LevelDifficulty.MEDIUM;
+            } else {
+                level = LevelDifficulty.HARD;
+            }
+        }
+
         String record = "\n" + category.name() + SEPARATOR + LevelDifficulty.EASY.name() + SEPARATOR + passwordToAdd;
         URL resourceUrl = getClass().getResource("/database/" + fileName);
         File file = new File(resourceUrl.toURI());

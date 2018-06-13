@@ -24,7 +24,6 @@ import logic.Game;
 import logic.GameTypes;
 import logic.LevelDifficulty;
 
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -34,8 +33,6 @@ public class GameViewController {
     static LevelDifficulty level = LevelDifficulty.EASY;
     static Category category = Category.ALL;
     static GameTypes type = GameTypes.NEW_GAME;
-    static boolean timed = GameTypes.timed;
-    Timer secondsDecrement;
     Timeline labelChange, endCall;
 
 
@@ -344,7 +341,6 @@ public class GameViewController {
         alert.setContentText(message);
         alert.getDialogPane().getChildren().stream().filter(node -> node instanceof Label).forEach(node -> ((Label)node).setMinHeight(Region.USE_PREF_SIZE));
 
-        secondsDecrement.cancel();
         endCall.stop();
         labelChange.stop();
 
@@ -438,32 +434,23 @@ public class GameViewController {
     void initTimer()
     {
         clockLabel.setDisable(false);
-        clockLabel.setText("5");
         int maxSeconds = game.getSecondsLeft();
-
-        secondsDecrement =new Timer();
-        secondsDecrement.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                game.decrementSecondsLeft();
-                System.out.println(game.getSecondsLeft());
-            }
-        }, 0, 1000);
 
         labelChange = new Timeline();
         labelChange.setCycleCount(maxSeconds);
         labelChange.getKeyFrames().add(new KeyFrame(Duration.millis(1000),
-                new EventHandler<>() {
+                new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
+                        game.decrementSecondsLeft();
                         clockLabel.setText(String.valueOf(game.getSecondsLeft()));
+
                     }
                 }));
-        labelChange.play();
 
         endCall = new Timeline();
         endCall.getKeyFrames().add(new KeyFrame(Duration.millis(1000 * maxSeconds),
-                new EventHandler<>() {
+                new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent event) {
                         showMessageAboutResultAndReturnToMenu(game.takeEndMessage());
@@ -472,13 +459,6 @@ public class GameViewController {
         labelChange.play();
         endCall.play();
 
-
-//        secondsDecrement.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//
-//            }
-//        },maxSeconds * 1000);
 
     }
 
@@ -489,8 +469,6 @@ public class GameViewController {
 
         drawGrayHangman();
         initAlert();
-
-
 
         if (game.deserialize()) {
             System.out.println("Udana deseralizacja");
@@ -547,6 +525,8 @@ public class GameViewController {
         {
             saveAndExitButton.setDisable(true);
             initTimer();
+        } else {
+            saveAndExitButton.setDisable(false);
         }
     }
 

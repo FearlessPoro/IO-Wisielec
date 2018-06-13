@@ -24,6 +24,7 @@ public class HangMan extends Application {
 
         stage.setMaxWidth(950);
         stage.setMaxHeight(638);
+        stage.resizableProperty().setValue(Boolean.FALSE);
         stage.setScene(scene);
         stage.show();
 

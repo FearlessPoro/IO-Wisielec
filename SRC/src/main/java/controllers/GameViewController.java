@@ -341,8 +341,8 @@ public class GameViewController {
         alert.setContentText(message);
         alert.getDialogPane().getChildren().stream().filter(node -> node instanceof Label).forEach(node -> ((Label)node).setMinHeight(Region.USE_PREF_SIZE));
 
-        endCall.stop();
-        labelChange.stop();
+//        endCall.stop();
+//        labelChange.stop();
 
         alert.setOnHidden((event) -> {
           try {

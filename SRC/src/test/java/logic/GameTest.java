@@ -10,7 +10,7 @@ public class GameTest {
 
     @Before
     public void setUp() throws Exception {
-        testGame = new Game(LevelDifficulty.EASY, Category.ALL, GameTypes.NEW_GAME);
+        testGame = new Game(LevelDifficulty.EASY, Category.ALL, GameTypes.NEW_GAME, false);
     }
 
     @Test

@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
-
+import logic.GameTypes;
 
 public class GameModeController {
 
@@ -19,11 +19,13 @@ public class GameModeController {
 
     @FXML
     void normalModeAction(ActionEvent event) throws Exception{
+        GameTypes.timed = false;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/levelOfDifficulty.fxml")));
     }
 
     @FXML
     void timeModeAction(ActionEvent event) throws Exception{
+        GameTypes.timed = true;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/levelOfDifficulty.fxml")));
     }
 

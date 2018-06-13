@@ -337,12 +337,19 @@ public class GameViewController {
             dialog.getStylesheets().add("stylesheet/dayStyle.css");
     }
 
+    private void stopClock(){
+        if(endCall != null)
+            endCall.stop();
+
+        if(labelChange != null)
+            labelChange.stop();
+    }
+
     private void showMessageAboutResultAndReturnToMenu(String message){
         alert.setContentText(message);
         alert.getDialogPane().getChildren().stream().filter(node -> node instanceof Label).forEach(node -> ((Label)node).setMinHeight(Region.USE_PREF_SIZE));
 
-//        endCall.stop();
-//        labelChange.stop();
+        stopClock();
 
         alert.setOnHidden((event) -> {
           try {
@@ -605,7 +612,6 @@ public class GameViewController {
         String wholePassword = wholePasswordField.getText();
 
         if (game.checkWholeWord(wholePassword)) {
-            //changeButtonsState(false);
             showMessageAboutResultAndReturnToMenu(game.takeEndMessage());
         } else {
             game.setLivesToZero();
@@ -628,10 +634,7 @@ public class GameViewController {
 
     @FXML
     void giveUpAction(ActionEvent event) throws Exception{
-        //not necessary i think
-        /*if (game.getType().equals(GameTypes.RESTORED_GAME)) {
-            game.clearSaves();
-        }*/
+        stopClock();
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/mainView.fxml")));
     }
 

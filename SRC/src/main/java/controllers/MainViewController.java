@@ -46,6 +46,7 @@ public class MainViewController {
 
     @FXML
     void restoreGameAction(ActionEvent event) throws Exception{
+        GameTypes.timed = false;
         GameViewController.type = GameTypes.RESTORED_GAME;
         HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameView.fxml")));
     }

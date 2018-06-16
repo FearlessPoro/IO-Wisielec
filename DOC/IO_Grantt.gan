@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2018-05-27" view-index="0" gantt-divider-location="323" resource-divider-location="379" version="2.8.6" locale="en_US">
+    <description/>
+    <view zooming-state="default:4" id="gantt-chart">
+        <field id="tpd3" name="Name" width="161" order="0"/>
+        <field id="tpd4" name="Begin date" width="79" order="1"/>
+        <field id="tpd5" name="End date" width="79" order="2"/>
+        <timeline><![CDATA[0,12,2]]></timeline>
+        <option id="color.recent"><![CDATA[#cc0000 #0033ff #ffff33]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="249" order="0"/>
+        <field id="1" name="Default role" width="126" order="1"/>
+    </view>
+    <!-- -->
+    <calendars base-id="pl">
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+        <date year="" month="1" date="1" type="HOLIDAY"><![CDATA[New Year's Day]]></date>
+        <date year="" month="1" date="6" type="HOLIDAY"><![CDATA[Epiphany]]></date>
+        <date year="" month="5" date="1" type="HOLIDAY" color="#ffff33"><![CDATA[Labor Day]]></date>
+        <date year="" month="5" date="3" type="HOLIDAY" color="#ffff33"><![CDATA[Constitution Day]]></date>
+        <date year="" month="8" date="15" type="HOLIDAY"><![CDATA[Assumption Day]]></date>
+        <date year="" month="11" date="1" type="HOLIDAY"><![CDATA[All Saints Day]]></date>
+        <date year="" month="11" date="11" type="HOLIDAY"><![CDATA[Independence Day]]></date>
+        <date year="" month="12" date="25" type="HOLIDAY"><![CDATA[Christmas]]></date>
+        <date year="" month="12" date="26" type="HOLIDAY"><![CDATA[St. Stephen's Day]]></date>
+        <date year="2017" month="4" date="16" type="HOLIDAY" color="#808080"><![CDATA[Easter]]></date>
+        <date year="2017" month="4" date="17" type="HOLIDAY"><![CDATA[Easter Monday]]></date>
+        <date year="2017" month="6" date="4" type="HOLIDAY"><![CDATA[Whit Sunday]]></date>
+        <date year="2017" month="6" date="15" type="HOLIDAY"><![CDATA[Corpus Christi]]></date>
+        <date year="2018" month="4" date="1" type="HOLIDAY" color="#ffff33"/>
+        <date year="2018" month="4" date="2" type="HOLIDAY" color="#ffff33"><![CDATA[Easter Monday]]></date>
+        <date year="2018" month="5" date="31" type="HOLIDAY" color="#ffff33"><![CDATA[Corpus Christi]]></date>
+        <date year="2012" month="4" date="8" type="HOLIDAY"/>
+        <date year="2012" month="4" date="9" type="HOLIDAY"/>
+        <date year="2012" month="5" date="27" type="HOLIDAY"/>
+        <date year="2012" month="6" date="7" type="HOLIDAY"/>
+        <date year="2006" month="4" date="17" type="HOLIDAY"/>
+        <date year="2006" month="6" date="15" type="HOLIDAY"/>
+        <date year="2007" month="4" date="9" type="HOLIDAY"/>
+        <date year="2007" month="6" date="7" type="HOLIDAY"/>
+        <date year="2008" month="3" date="24" type="HOLIDAY"/>
+        <date year="2008" month="5" date="22" type="HOLIDAY"/>
+        <date year="2009" month="4" date="13" type="HOLIDAY"/>
+        <date year="2009" month="6" date="11" type="HOLIDAY"/>
+        <date year="2018" month="3" date="30" type="HOLIDAY" color="#ffff33"/>
+        <date year="2018" month="3" date="31" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 31.03.18 00:00]]></date>
+        <date year="2018" month="4" date="3" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 03.04.18 00:00]]></date>
+        <date year="2018" month="4" date="4" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 04.04.18 00:00]]></date>
+        <date year="2018" month="4" date="30" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 30.04.18 00:00]]></date>
+        <date year="2018" month="5" date="2" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 02.05.18 00:00]]></date>
+        <date year="2018" month="5" date="4" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 04.05.18 00:00]]></date>
+        <date year="2018" month="5" date="5" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 05.05.18 00:00]]></date>
+        <date year="2018" month="5" date="6" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 06.05.18 00:00]]></date>
+        <date year="2018" month="5" date="9" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 09.05.18 00:00]]></date>
+        <date year="2018" month="5" date="10" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 10.05.18 00:00]]></date>
+        <date year="2018" month="5" date="11" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 11.05.18 00:00]]></date>
+        <date year="2018" month="5" date="12" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 12.05.18 00:00]]></date>
+        <date year="2018" month="5" date="13" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 13.05.18 00:00]]></date>
+        <date year="2018" month="6" date="1" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 01.06.18 00:00]]></date>
+        <date year="2018" month="6" date="3" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 03.06.18 00:00]]></date>
+        <date year="2018" month="6" date="2" type="HOLIDAY" color="#ffff33"><![CDATA[Urlop w 02.06.18 00:00]]></date>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" name="Interfejs Graficzny" color="#8cb6ce" shape="1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1" meeting="false" start="2018-03-20" duration="7" complete="0" thirdDate="2018-03-20" thirdDate-constraint="1" expand="true">
+            <notes><![CDATA[Prototyp interfejsu graficznego:, należy przygotwać:
+- przyciski reprezentujące klawiaturę, zawierającą wszystkie litery polskiego alfabetu
+- przycisk Losuj do losowania hasła z testowej bazy danych
+- przycisk Sprawdź do sprawdzenia czy podane przez użytkownika hasło jest poprawne
+- pole do wyświetlania pozostałych żyć
+- pole tekstowe potrzebne do wyświetlania hasła ]]></notes>
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+            <depend id="14" type="2" difference="0" hardness="Strong"/>
+            <depend id="31" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="2" name="Podstawowa Logika" color="#8cb6ce" shape="0,1,0,1,0,0,1,0,0,1,0,1,1,0,0,0" meeting="false" start="2018-03-20" duration="7" complete="0" thirdDate="2018-03-20" thirdDate-constraint="0" priority="2" expand="true">
+            <notes><![CDATA[Wynik działania zwracany przez konsolę będzie później przekazany do interfejsu graficznego:
+-losowanie hasła z prostej bazy danych (plik tekstowy zawierający 4 słowa oddzielone średnikiem)
+-na początku rozgrywki hasło ma być przedstawione za pomocą ciągu znaków podkreślenia (długość tego ciągu jest równa długości słowa). Jeśli podana zostanie litera występująca w haśle to w odpowiednim miejscu zamiast podkreślenia pojawi się odgadnięta litera (odsłonięte mają zostać wszystkie wystąpienia odgadniętej litery)
+-przy każdym ruchu wyświetlana jest ilość żyć (zaczynamy od 10 żyć, bo tyle części wisielca możemy narysować, każde stracone życie reprezentuje kolejną narysowaną część)
+-jeśli użytkownik wykorzysta wszystkie życia ma się wyświetlić komunikat o przegranej i hasło
+-serializacja- zapis stanu gry, jeśli użytkownik wyłączy aplikację w trakcie rozgrywki, będzie miał możliwoć przywrócenia stanu gry
+-w przypadku odgadnięcia hasła ma się wyświetlić stosowny komunikat]]></notes>
+            <depend id="7" type="2" difference="0" hardness="Strong"/>
+            <depend id="28" type="2" difference="0" hardness="Strong"/>
+            <depend id="31" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="7" name="Dodanie do interfejsu graficznego logiki" color="#0033ff" shape="1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0" meeting="false" start="2018-03-29" duration="4" complete="0" thirdDate="2018-03-29" thirdDate-constraint="0" priority="4" expand="true">
+            <notes><![CDATA[Połączenie interfejsu i logiki:
+-przycisk Losuj ma losować hasło z bazy danych
+-w polu tekstowym ma się wyświetlić zgadywane hasło jako ciąg podkreślników 
+-po naciścięciu litery na klawiaturze w interfejsie ma nastąpić:
+	*zamiana podkreślnika na odpowiednią literę lub litery w haśle, jeśli zawiera się ona w haśle
+	*odjęcie jednego życia, jeśli litera nie zawiera się w haśle
+-jeśli użytkownik wypełni całe hasło to po naciśnięciu przycisku Sprawdź ma wyświetlić się stosowny komunikat o wygranej
+-jeśli gracz straci wszystkie życia wyświetli się stosowny komunikat i hasło, którego nie odgadł
+-serializacja- w przypadku zamknięcia aplikacji w trakcie rozgrywki, stan gry zostanie zapamiętany i przywrócony przy ponownym uruchomieniu aplikacji
+]]></notes>
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+            <depend id="31" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="12" name="Oddanie pierwszego prototypu" color="#cc0000" shape="0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0" meeting="true" start="2018-04-10" duration="0" complete="0" thirdDate="2018-04-10" thirdDate-constraint="0" priority="4" expand="true">
+            <depend id="14" type="2" difference="0" hardness="Strong"/>
+            <depend id="28" type="2" difference="0" hardness="Strong"/>
+            <depend id="31" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="14" name="Dodanie brakujących widoków" color="#8cb6ce" meeting="false" start="2018-04-10" duration="11" complete="0" thirdDate="2018-04-10" thirdDate-constraint="0" expand="true">
+            <depend id="42" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="28" name="Działający ranking" color="#8cb6ce" meeting="false" start="2018-04-10" duration="11" complete="0" thirdDate="2018-04-10" thirdDate-constraint="0" expand="true">
+            <depend id="42" type="2" difference="0" hardness="Strong"/>
+            <depend id="73" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="31" name="Dźwięki" color="#8cb6ce" meeting="false" start="2018-04-10" duration="11" complete="0" thirdDate="2018-03-26" thirdDate-constraint="0" expand="true">
+            <depend id="42" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="42" name="Koniec drugiego sprintu" color="#8cb6ce" meeting="true" start="2018-04-25" duration="0" complete="0" thirdDate="2018-03-26" thirdDate-constraint="0" expand="true">
+            <depend id="45" type="2" difference="0" hardness="Strong"/>
+            <depend id="48" type="2" difference="0" hardness="Strong"/>
+            <depend id="49" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="44" name="Pajacyk" color="#8cb6ce" meeting="false" start="2018-05-14" duration="13" complete="0" thirdDate="2018-04-25" thirdDate-constraint="0" expand="true">
+            <depend id="78" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="45" name="Serializacja" color="#8cb6ce" meeting="false" start="2018-04-25" duration="5" complete="0" thirdDate="2018-03-26" thirdDate-constraint="0" expand="true">
+            <depend id="54" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="48" name="Widoczny wisielec" color="#8cb6ce" meeting="false" start="2018-04-25" duration="5" complete="0" thirdDate="2018-04-09" thirdDate-constraint="0" expand="true">
+            <depend id="44" type="2" difference="0" hardness="Strong"/>
+            <depend id="54" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="54" name="Koniec trzeciego sprintu" color="#8cb6ce" meeting="true" start="2018-05-14" duration="0" complete="0" thirdDate="2018-06-04" thirdDate-constraint="0" expand="true">
+            <depend id="59" type="2" difference="0" hardness="Strong"/>
+            <depend id="73" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="49" name="Tryb nocny" color="#8cb6ce" meeting="false" start="2018-04-25" duration="5" complete="0" thirdDate="2018-04-25" thirdDate-constraint="0" expand="true">
+            <depend id="54" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="59" name="Losowanie słów" color="#8cb6ce" meeting="false" start="2018-05-14" duration="13" complete="0" thirdDate="2018-04-23" thirdDate-constraint="0" expand="true">
+            <depend id="76" type="1" difference="0" hardness="Strong"/>
+            <depend id="78" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="73" name="Wyswietlanie rankingu" color="#8cb6ce" meeting="false" start="2018-05-14" duration="13" complete="0" thirdDate="2018-05-14" thirdDate-constraint="0" expand="true">
+            <depend id="78" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="76" name="Dodawanie słów do bazy" color="#8cb6ce" meeting="false" start="2018-05-14" duration="13" complete="0" thirdDate="2018-05-07" thirdDate-constraint="0" expand="true">
+            <depend id="78" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="78" name="Koniec czwartego sprintu" color="#8cb6ce" meeting="true" start="2018-06-04" duration="0" complete="0" thirdDate="2018-05-07" thirdDate-constraint="0" expand="true">
+            <depend id="79" type="2" difference="0" hardness="Strong"/>
+            <depend id="85" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="79" name="Dodanie zegara i trybu gry na czas" color="#8cb6ce" meeting="false" start="2018-06-04" duration="3" complete="0" thirdDate="2018-06-04" thirdDate-constraint="0" expand="true"/>
+        <task id="85" name="Dopisanie brakujących unit testów" color="#8cb6ce" meeting="false" start="2018-06-04" duration="3" complete="0" thirdDate="2018-06-04" thirdDate-constraint="0" expand="true">
+            <depend id="89" type="2" difference="0" hardness="Strong"/>
+            <depend id="101" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="89" name="Testy integracyjne i akceptacyjne" color="#8cb6ce" meeting="false" start="2018-06-07" duration="6" complete="0" thirdDate="2018-06-06" thirdDate-constraint="0" expand="true">
+            <depend id="101" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="101" name="Oddawanie projektu" color="#8cb6ce" meeting="true" start="2018-06-15" duration="0" complete="0" thirdDate="2018-06-20" thirdDate-constraint="0" expand="true"/>
+    </tasks>
+    <resources>
+        <resource id="0" name="Wojciech Franczuk" function="Default:1" contacts="" phone="">
+            <rate name="standard" value="-100"/>
+        </resource>
+        <resource id="1" name="Magdalena Gajek" function="1" contacts="" phone=""/>
+        <resource id="2" name="Justyna Gacek" function="2" contacts="" phone=""/>
+        <resource id="3" name="Piotr Pasternak" function="3" contacts="" phone=""/>
+        <resource id="4" name="Miłosz Świerad" function="3" contacts="" phone=""/>
+        <resource id="5" name="Paweł Hadam" function="2" contacts="" phone=""/>
+        <resource id="6" name="Adam Andrulewicz" function="2" contacts="" phone=""/>
+    </resources>
+    <allocations>
+        <allocation task-id="79" resource-id="0" function="Default:1" responsible="true" load="100.0"/>
+        <allocation task-id="14" resource-id="2" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="44" resource-id="2" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="48" resource-id="2" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="49" resource-id="2" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="89" resource-id="3" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="85" resource-id="4" function="3" responsible="true" load="100.0"/>
+        <allocation task-id="31" resource-id="5" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="45" resource-id="5" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="28" resource-id="6" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="45" resource-id="6" function="2" responsible="false" load="100.0"/>
+        <allocation task-id="59" resource-id="6" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="73" resource-id="6" function="2" responsible="true" load="100.0"/>
+        <allocation task-id="76" resource-id="6" function="2" responsible="true" load="100.0"/>
+    </allocations>
+    <vacations>
+        <vacation start="2018-05-31" end="2018-06-05" resourceid="0"/>
+        <vacation start="2018-04-07" end="2018-04-09" resourceid="2"/>
+        <vacation start="2018-05-14" end="2018-05-15" resourceid="3"/>
+    </vacations>
+    <previous/>
+    <roles roleset-name="Default"/>
+    <roles>
+        <role id="1" name="Inżynier Systemowy"/>
+        <role id="2" name="Programista"/>
+        <role id="3" name="Tester"/>
+    </roles>
+</project>

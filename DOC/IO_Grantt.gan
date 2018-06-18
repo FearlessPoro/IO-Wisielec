@@ -80,7 +80,7 @@
             <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
-        <task id="0" name="Interfejs Graficzny" color="#8cb6ce" shape="1,0,1,0,0,1,0,1,1,0,1,0,0,1,0,1" meeting="false" start="2018-03-20" duration="7" complete="0" thirdDate="2018-03-20" thirdDate-constraint="1" expand="true">
+        <task id="0" name="Interfejs Graficzny" color="#8cb6ce" shape="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" meeting="false" start="2018-03-20" duration="7" complete="0" thirdDate="2018-03-20" thirdDate-constraint="1" expand="true">
             <notes><![CDATA[Prototyp interfejsu graficznego:, należy przygotwać:
 - przyciski reprezentujące klawiaturę, zawierającą wszystkie litery polskiego alfabetu
 - przycisk Losuj do losowania hasła z testowej bazy danych
@@ -90,7 +90,7 @@
             <depend id="12" type="2" difference="0" hardness="Strong"/>
             <depend id="14" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="2" name="Podstawowa Logika" color="#8cb6ce" shape="0,1,0,1,0,0,1,0,0,1,0,1,1,0,0,0" meeting="false" start="2018-03-20" duration="7" complete="0" thirdDate="2018-03-20" thirdDate-constraint="0" priority="2" expand="true">
+        <task id="2" name="Podstawowa Logika" color="#8cb6ce" shape="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" meeting="false" start="2018-03-20" duration="7" complete="0" thirdDate="2018-03-20" thirdDate-constraint="0" priority="2" expand="true">
             <notes><![CDATA[Wynik działania zwracany przez konsolę będzie później przekazany do interfejsu graficznego:
 -losowanie hasła z prostej bazy danych (plik tekstowy zawierający 4 słowa oddzielone średnikiem)
 -na początku rozgrywki hasło ma być przedstawione za pomocą ciągu znaków podkreślenia (długość tego ciągu jest równa długości słowa). Jeśli podana zostanie litera występująca w haśle to w odpowiednim miejscu zamiast podkreślenia pojawi się odgadnięta litera (odsłonięte mają zostać wszystkie wystąpienia odgadniętej litery)
@@ -100,7 +100,7 @@
 -w przypadku odgadnięcia hasła ma się wyświetlić stosowny komunikat]]></notes>
             <depend id="7" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="7" name="Dodanie do interfejsu graficznego logiki" color="#0033ff" shape="1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0" meeting="false" start="2018-03-29" duration="4" complete="0" thirdDate="2018-03-29" thirdDate-constraint="0" priority="4" expand="true">
+        <task id="7" name="Dodanie do interfejsu graficznego logiki" color="#8cb6ce" shape="0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0" meeting="false" start="2018-03-29" duration="4" complete="0" thirdDate="2018-03-29" thirdDate-constraint="0" priority="4" expand="true">
             <notes><![CDATA[Połączenie interfejsu i logiki:
 -przycisk Losuj ma losować hasło z bazy danych
 -w polu tekstowym ma się wyświetlić zgadywane hasło jako ciąg podkreślników 

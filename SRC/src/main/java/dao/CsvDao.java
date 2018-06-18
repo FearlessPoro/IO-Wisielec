@@ -114,19 +114,19 @@ public class CsvDao {
     }
 
     public String canAdd(String passwordToAdd, String passwordToConfirm) throws FileNotFoundException, URISyntaxException {
-        String newPasswordToAdd = passwordToAdd.trim();
-        String newPasswordToConfirm = passwordToConfirm.trim();
+        String newPasswordToAdd = passwordToAdd.trim().toUpperCase();
+        String newPasswordToConfirm = passwordToConfirm.trim().toUpperCase();
         if (!newPasswordToAdd.equals(newPasswordToConfirm)){
-            return "Hasla nie zgadzaja sie";
+            return "Hasła nie zgadzają się";
         } else {
             if (newPasswordToAdd.length() > 30 || newPasswordToConfirm.length() < 2){
-                return "Nieprawidlowa dlugosc hasla";
+                return "Nieprawidłowa długość hasła";
             } else {
                 if (!newPasswordToAdd.matches("[a-zA-Z\\s]*")){
-                    return "Haslo musi skladac sie z liter";
+                    return "Hasło musi składać się z liter";
                 } else {
                     addPassword(newPasswordToAdd);
-                    return "Haslo dodane do bazy";
+                    return "Hasło dodane do bazy";
                 }
             }
         }

@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="622.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.GameViewController">
+   <children>
+      <ScrollPane prefHeight="622.0" prefWidth="948.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="604.0" prefWidth="946.0" styleClass="background">
+               <children>
+                  <Pane fx:id="keyboardPane" layoutX="21.0" layoutY="383.0" prefHeight="213.0" prefWidth="446.0">
+                     <children>
+                        <Button fx:id="A" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#aClick" prefHeight="33.0" prefWidth="50.0" text="A" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="E1" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="14.0" layoutY="52.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#e1Click" prefHeight="33.0" prefWidth="50.0" text="Ę" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="L" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="14.0" layoutY="94.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#lClick" prefHeight="33.0" prefWidth="50.0" text="L" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="P" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="14.0" layoutY="137.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#pClick" prefHeight="33.0" prefWidth="50.0" text="P" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="V" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="14.0" layoutY="180.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#vClick" prefHeight="33.0" prefWidth="50.0" text="V" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="A1" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="74.0" layoutY="9.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#a1Click" prefHeight="33.0" prefWidth="50.0" text="Ą" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="F" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="74.0" layoutY="52.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#fClick" prefHeight="33.0" prefWidth="50.0" text="F" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="L1" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="74.0" layoutY="94.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#l1Click" prefHeight="33.0" prefWidth="50.0" text="Ł" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="Q" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="74.0" layoutY="137.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#qClick" prefHeight="33.0" prefWidth="50.0" text="Q" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="W" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="74.0" layoutY="180.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#wClick" prefHeight="33.0" prefWidth="50.0" text="W" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="B" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="134.0" layoutY="9.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#bClick" prefHeight="33.0" prefWidth="50.0" text="B" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="G" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="134.0" layoutY="52.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#gClick" prefHeight="33.0" prefWidth="50.0" text="G" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="M" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="134.0" layoutY="94.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#mClick" prefHeight="33.0" prefWidth="50.0" text="M" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="R" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="134.0" layoutY="137.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#rClick" prefHeight="33.0" prefWidth="50.0" text="R" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="X" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="134.0" layoutY="180.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#xClick" prefHeight="33.0" prefWidth="50.0" text="X" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="C" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="194.0" layoutY="9.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#cClick" prefHeight="33.0" prefWidth="50.0" text="C" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="H" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="194.0" layoutY="52.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#hClick" prefHeight="33.0" prefWidth="50.0" text="H" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="N" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="194.0" layoutY="94.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#nClick" prefHeight="33.0" prefWidth="50.0" text="N" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="S" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="194.0" layoutY="137.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#sClick" prefHeight="33.0" prefWidth="50.0" text="S" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="Y" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="194.0" layoutY="180.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#yClick" prefHeight="33.0" prefWidth="50.0" text="Y" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="C1" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="254.0" layoutY="9.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#c1Click" prefHeight="33.0" prefWidth="50.0" text="Ć" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="I" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="254.0" layoutY="52.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#iClick" prefHeight="33.0" prefWidth="50.0" text="I" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="N1" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="254.0" layoutY="94.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#n1Click" prefHeight="33.0" prefWidth="50.0" text="Ń" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="S1" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="254.0" layoutY="137.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#s1Click" prefHeight="33.0" prefWidth="50.0" text="Ś" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="Z" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="254.0" layoutY="180.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#zClick" prefHeight="33.0" prefWidth="50.0" text="Z" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="D" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="314.0" layoutY="9.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#dClick" prefHeight="33.0" prefWidth="50.0" text="D" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="J" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="314.0" layoutY="52.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#jClick" prefHeight="33.0" prefWidth="50.0" text="J" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="O" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="314.0" layoutY="94.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#oClick" prefHeight="33.0" prefWidth="50.0" text="O" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="T" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="314.0" layoutY="137.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#tClick" prefHeight="33.0" prefWidth="50.0" text="T" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="Z1" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="314.0" layoutY="180.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#z1Click" prefHeight="33.0" prefWidth="50.0" text="Ź" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="E" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="374.0" layoutY="9.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#eClick" prefHeight="33.0" prefWidth="50.0" text="E" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="K" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="374.0" layoutY="52.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#kClick" prefHeight="33.0" prefWidth="50.0" text="K" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="O1" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="374.0" layoutY="94.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#o1Click" prefHeight="33.0" prefWidth="50.0" text="Ó" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="U" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="374.0" layoutY="137.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#uClick" prefHeight="33.0" prefWidth="50.0" text="U" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="Z2" alignment="CENTER" cache="true" contentDisplay="CENTER" layoutX="374.0" layoutY="180.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#z2Click" prefHeight="33.0" prefWidth="50.0" text="Ż" textAlignment="CENTER" textFill="#2d2c2ecf">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="passwordPane" layoutX="21.0" layoutY="16.0" prefHeight="352.0" prefWidth="446.0">
+                     <children>
+                        <TextArea fx:id="guessPasswordField" editable="false" layoutX="4.0" layoutY="56.0" prefHeight="145.0" prefWidth="435.0" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </TextArea>
+                        <TextArea fx:id="wholePasswordField" layoutX="8.0" layoutY="241.0" prefHeight="104.0" prefWidth="299.0" wrapText="true">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </TextArea>
+                        <Button fx:id="checkPassword" layoutX="310.0" layoutY="241.0" mnemonicParsing="false" onAction="#checkPasswordAction" prefHeight="103.0" prefWidth="132.0" text="Sprawdź!">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font></Button>
+                        <Label fx:id="passwordCategoryLabel" layoutX="9.0" layoutY="24.0" prefHeight="25.0" prefWidth="265.0" styleClass="labelNightStyle" text="Wybrana kategoria hasła: ">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="8.0" layoutY="207.0" prefHeight="34.0" prefWidth="315.0" styleClass="labelNightStyle" text="Odgadnij całe hasło:">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="passwordCategory" layoutX="273.0" layoutY="24.0" prefHeight="25.0" prefWidth="169.0">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="hangedManPane" layoutX="479.0" layoutY="35.0" onMouseClicked="#jumpingJackClicked" prefHeight="333.0" prefWidth="447.0">
+                     <children>
+                        <Label fx:id="leftChanceLabel" layoutX="408.0" layoutY="297.0" prefHeight="45.0" prefWidth="51.0" text="10">
+                           <font>
+                              <Font size="26.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="309.0" layoutY="309.0" text="Liczba żyć:">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane fx:id="buttonsPane" layoutX="473.0" layoutY="399.0" prefHeight="213.0" prefWidth="248.0">
+                     <children>
+                        <Button fx:id="saveAndExitButton" layoutY="107.0" mnemonicParsing="false" onAction="#saveAndExitAction" prefHeight="50.0" prefWidth="240.0" text="Zapisz i wyjdź">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="giveUpButton" layoutY="43.0" mnemonicParsing="false" onAction="#giveUpAction" prefHeight="50.0" prefWidth="240.0" text="Poddaj się">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Button>
+                     </children></Pane>
+                  <Label fx:id="clockLabel" disable="true" layoutX="768.0" layoutY="427.0" prefHeight="140.0" prefWidth="129.0" text="60">
+                     <font>
+                        <Font size="91.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+        </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

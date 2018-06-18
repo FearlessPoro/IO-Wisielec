@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="622.0" prefWidth="948.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CategoriesContoller">
+   <children>
+      <ScrollPane prefHeight="622.0" prefWidth="948.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <content>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="604.0" prefWidth="946.0" styleClass="background">
+               <children>
+                  <Pane fx:id="categoriesPane" layoutX="106.0" layoutY="71.0" prefHeight="491.0" prefWidth="734.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="40.0">
+                     <children>
+                        <Label alignment="CENTER" layoutX="91.0" layoutY="25.0" prefHeight="53.0" prefWidth="560.0" text="Wybierz kategorię">
+                           <font>
+                              <Font name="System Bold" size="30.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="allChooseButton" layoutX="90.0" layoutY="120.0" mnemonicParsing="false" onAction="#allChooseAction" prefHeight="75.0" prefWidth="260.0" text="WSZYSTKIE" />
+                        <Button fx:id="musicChooseButton" layoutX="90.0" layoutY="420.0" mnemonicParsing="false" onAction="#literatureChooseAction" prefHeight="75.0" prefWidth="260.0" text="LITERATURA" />
+                        <Button fx:id="sportChooseButton" layoutX="90.0" layoutY="220.0" mnemonicParsing="false" onAction="#sportChooseAction" prefHeight="75.0" prefWidth="260.0" text="SPORT" />
+                        <Button fx:id="musicChooseButton" layoutX="90.0" layoutY="320.0" mnemonicParsing="false" onAction="#musicChooseAction" prefHeight="75.0" prefWidth="260.0" text="MUZYKA" />
+                        <Button fx:id="geographyChooseButton" layoutX="390.0" layoutY="120.0" mnemonicParsing="false" onAction="#geographyChooseAction" prefHeight="75.0" prefWidth="260.0" text="GEOGRAFIA" />
+                        <Button fx:id="kinoChooseButton" layoutX="390.0" layoutY="420.0" mnemonicParsing="false" onAction="#kinoChooseAction" prefHeight="75.0" prefWidth="260.0" text="KINO" />
+                        <Button fx:id="culinaryChooseButton" layoutX="390.0" layoutY="220.0" mnemonicParsing="false" onAction="#culinaryChooseAction" prefHeight="75.0" prefWidth="260.0" text="KULINARIA" />
+                        <Button fx:id="natureChooseButton" layoutX="390.0" layoutY="320.0" mnemonicParsing="false" onAction="#natureChooseAction" prefHeight="75.0" prefWidth="260.0" text="NATURA" />
+                     </children>
+                  </Pane>
+                  <Button fx:id="returnButton" layoutX="25.0" layoutY="515.0" mnemonicParsing="false" onAction="#returnAction" prefHeight="70.0" prefWidth="70.0" styleClass="returnButton" text="Powrót" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </children>
+</AnchorPane>

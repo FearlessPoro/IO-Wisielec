@@ -1,0 +1,53 @@
+
+
+.button {
+    -fx-background-color:  linear-gradient(greenyellow   , limegreen );
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-padding: 1 10 1 10;
+}
+
+.background {
+    -fx-background-color:  linear-gradient(gold , whitesmoke);
+}
+
+.toggle-button {
+    -fx-background-color:  linear-gradient(greenyellow   , limegreen );
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 5 30 5 30;
+}
+
+#returnButton {
+    -fx-background-color:  linear-gradient(greenyellow   , limegreen );
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-padding: 2 10 2 10;
+}
+
+.dialog-pane {
+    -fx-background-color:  linear-gradient(gold , whitesmoke);
+    -fx-pref-height: 200px;
+    -fx-pref-width: 600px;
+}
+
+.dialog-pane .label {
+    -fx-text-fill: black;
+    -fx-font-size: 23px;
+}
+
+.dialog-pane .button {
+    -fx-background-color:  linear-gradient(greenyellow   , limegreen );
+    -fx-text-fill: black;
+    -fx-font-weight: bold;
+    -fx-font-size: 20px;
+    -fx-padding: 1 10 1 10;
+    -fx-pref-width: 350px;
+    -fx-pref-height: 30px;
+}
+
+
+

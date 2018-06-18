@@ -125,7 +125,7 @@ public class CsvDao {
                 if (!newPasswordToAdd.matches("[a-zA-Z\\s]*")){
                     return "Haslo musi skladac sie z liter";
                 } else {
-                    addPassword(passwordToAdd);
+                    addPassword(newPasswordToAdd);
                     return "Haslo dodane do bazy";
                 }
             }

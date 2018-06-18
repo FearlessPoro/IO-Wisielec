@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2018-05-13" view-index="0" gantt-divider-location="323" resource-divider-location="379" version="2.8.6" locale="en_US">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2018-04-01" view-index="0" gantt-divider-location="323" resource-divider-location="379" version="2.8.6" locale="en_US">
     <description/>
     <view zooming-state="default:4" id="gantt-chart">
         <field id="tpd3" name="Name" width="161" order="0"/>
         <field id="tpd4" name="Begin date" width="79" order="1"/>
         <field id="tpd5" name="End date" width="79" order="2"/>
-        <timeline><![CDATA[0,12,2]]></timeline>
+        <timeline><![CDATA[14,42,0,12,2]]></timeline>
         <option id="color.recent"><![CDATA[#cc0000 #0033ff #ffff33]]></option>
     </view>
     <view id="resource-table">
@@ -89,7 +89,6 @@
 - pole tekstowe potrzebne do wyświetlania hasła ]]></notes>
             <depend id="12" type="2" difference="0" hardness="Strong"/>
             <depend id="14" type="2" difference="0" hardness="Strong"/>
-            <depend id="31" type="2" difference="0" hardness="Strong"/>
         </task>
         <task id="2" name="Podstawowa Logika" color="#8cb6ce" shape="0,1,0,1,0,0,1,0,0,1,0,1,1,0,0,0" meeting="false" start="2018-03-20" duration="7" complete="0" thirdDate="2018-03-20" thirdDate-constraint="0" priority="2" expand="true">
             <notes><![CDATA[Wynik działania zwracany przez konsolę będzie później przekazany do interfejsu graficznego:
@@ -100,8 +99,6 @@
 -serializacja- zapis stanu gry, jeśli użytkownik wyłączy aplikację w trakcie rozgrywki, będzie miał możliwoć przywrócenia stanu gry
 -w przypadku odgadnięcia hasła ma się wyświetlić stosowny komunikat]]></notes>
             <depend id="7" type="2" difference="0" hardness="Strong"/>
-            <depend id="28" type="2" difference="0" hardness="Strong"/>
-            <depend id="31" type="2" difference="0" hardness="Strong"/>
         </task>
         <task id="7" name="Dodanie do interfejsu graficznego logiki" color="#0033ff" shape="1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0" meeting="false" start="2018-03-29" duration="4" complete="0" thirdDate="2018-03-29" thirdDate-constraint="0" priority="4" expand="true">
             <notes><![CDATA[Połączenie interfejsu i logiki:
@@ -115,57 +112,40 @@
 -serializacja- w przypadku zamknięcia aplikacji w trakcie rozgrywki, stan gry zostanie zapamiętany i przywrócony przy ponownym uruchomieniu aplikacji
 ]]></notes>
             <depend id="12" type="2" difference="0" hardness="Strong"/>
-            <depend id="31" type="2" difference="0" hardness="Strong"/>
         </task>
         <task id="12" name="Oddanie pierwszego prototypu" color="#cc0000" shape="0,1,1,0,1,1,1,1,1,1,1,1,0,1,1,0" meeting="true" start="2018-04-10" duration="0" complete="0" thirdDate="2018-04-10" thirdDate-constraint="0" priority="4" expand="true">
             <depend id="14" type="2" difference="0" hardness="Strong"/>
-            <depend id="28" type="2" difference="0" hardness="Strong"/>
-            <depend id="31" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="14" name="Dodanie brakujących widoków" color="#8cb6ce" meeting="false" start="2018-04-10" duration="11" complete="0" thirdDate="2018-04-10" thirdDate-constraint="0" expand="true">
+        <task id="14" name="Dodanie brakujących widoków" color="#8cb6ce" meeting="false" start="2018-04-10" duration="11" complete="0" thirdDate="2018-04-10" thirdDate-constraint="0" priority="4" expand="true">
             <depend id="42" type="2" difference="0" hardness="Strong"/>
-        </task>
-        <task id="28" name="Działający ranking" color="#8cb6ce" meeting="false" start="2018-04-10" duration="11" complete="0" thirdDate="2018-04-10" thirdDate-constraint="0" expand="true">
-            <depend id="42" type="2" difference="0" hardness="Strong"/>
-            <depend id="73" type="2" difference="0" hardness="Strong"/>
-        </task>
-        <task id="31" name="Dźwięki" color="#8cb6ce" meeting="false" start="2018-04-10" duration="11" complete="0" thirdDate="2018-03-26" thirdDate-constraint="0" expand="true">
-            <depend id="42" type="2" difference="0" hardness="Strong"/>
-        </task>
-        <task id="42" name="Koniec drugiego sprintu" color="#8cb6ce" meeting="true" start="2018-04-25" duration="0" complete="0" thirdDate="2018-03-26" thirdDate-constraint="0" expand="true">
-            <depend id="45" type="2" difference="0" hardness="Strong"/>
-            <depend id="48" type="2" difference="0" hardness="Strong"/>
             <depend id="49" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="44" name="Pajacyk" color="#8cb6ce" meeting="false" start="2018-05-14" duration="13" complete="0" thirdDate="2018-04-25" thirdDate-constraint="0" expand="true">
-            <depend id="78" type="2" difference="0" hardness="Strong"/>
+        <task id="28" name="Działający ranking" color="#8cb6ce" meeting="false" start="2018-04-10" duration="11" complete="0" thirdDate="2018-04-10" thirdDate-constraint="0" expand="true">
+            <depend id="73" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="45" name="Serializacja" color="#8cb6ce" meeting="false" start="2018-04-25" duration="5" complete="0" thirdDate="2018-03-26" thirdDate-constraint="0" expand="true">
-            <depend id="54" type="2" difference="0" hardness="Strong"/>
+        <task id="31" name="Dźwięki" color="#8cb6ce" meeting="false" start="2018-04-10" duration="11" complete="0" thirdDate="2018-04-10" thirdDate-constraint="0" expand="true"/>
+        <task id="42" name="Koniec drugiego sprintu" color="#8cb6ce" meeting="true" start="2018-04-25" duration="0" complete="0" thirdDate="2018-04-25" thirdDate-constraint="0" priority="4" expand="true">
+            <depend id="48" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="48" name="Widoczny wisielec" color="#8cb6ce" meeting="false" start="2018-04-25" duration="5" complete="0" thirdDate="2018-04-09" thirdDate-constraint="0" expand="true">
+        <task id="44" name="Pajacyk" color="#8cb6ce" meeting="false" start="2018-05-14" duration="13" complete="0" thirdDate="2018-05-14" thirdDate-constraint="0" expand="true"/>
+        <task id="45" name="Serializacja" color="#8cb6ce" meeting="false" start="2018-04-25" duration="5" complete="0" thirdDate="2018-04-25" thirdDate-constraint="0" expand="true"/>
+        <task id="48" name="Widoczny wisielec" color="#8cb6ce" meeting="false" start="2018-04-25" duration="5" complete="0" thirdDate="2018-04-25" thirdDate-constraint="0" priority="4" expand="true">
             <depend id="44" type="2" difference="0" hardness="Strong"/>
             <depend id="54" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="54" name="Koniec trzeciego sprintu" color="#8cb6ce" meeting="true" start="2018-05-14" duration="0" complete="0" thirdDate="2018-06-04" thirdDate-constraint="0" expand="true">
+        <task id="54" name="Koniec trzeciego sprintu" color="#8cb6ce" meeting="true" start="2018-05-14" duration="0" complete="0" thirdDate="2018-05-14" thirdDate-constraint="0" priority="4" expand="true">
             <depend id="59" type="2" difference="0" hardness="Strong"/>
             <depend id="73" type="2" difference="0" hardness="Strong"/>
             <depend id="79" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="49" name="Tryb nocny" color="#8cb6ce" meeting="false" start="2018-04-25" duration="5" complete="0" thirdDate="2018-04-25" thirdDate-constraint="0" expand="true">
-            <depend id="54" type="2" difference="0" hardness="Strong"/>
-        </task>
+        <task id="49" name="Tryb nocny" color="#8cb6ce" meeting="false" start="2018-04-25" duration="5" complete="0" thirdDate="2018-04-25" thirdDate-constraint="0" expand="true"/>
         <task id="59" name="Losowanie słów" color="#8cb6ce" meeting="false" start="2018-05-14" duration="13" complete="0" thirdDate="2018-04-23" thirdDate-constraint="0" expand="true">
             <depend id="76" type="1" difference="0" hardness="Strong"/>
             <depend id="78" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="73" name="Wyswietlanie rankingu" color="#8cb6ce" meeting="false" start="2018-05-14" duration="13" complete="0" thirdDate="2018-05-14" thirdDate-constraint="0" expand="true">
-            <depend id="78" type="2" difference="0" hardness="Strong"/>
-        </task>
-        <task id="76" name="Dodawanie słów do bazy" color="#8cb6ce" meeting="false" start="2018-05-14" duration="13" complete="0" thirdDate="2018-05-07" thirdDate-constraint="0" expand="true">
-            <depend id="78" type="2" difference="0" hardness="Strong"/>
-        </task>
-        <task id="78" name="Koniec czwartego sprintu" color="#8cb6ce" meeting="true" start="2018-06-04" duration="0" complete="0" thirdDate="2018-05-07" thirdDate-constraint="0" expand="true">
+        <task id="73" name="Wyswietlanie rankingu" color="#8cb6ce" meeting="false" start="2018-05-14" duration="13" complete="0" thirdDate="2018-05-14" thirdDate-constraint="0" expand="true"/>
+        <task id="76" name="Dodawanie słów do bazy" color="#8cb6ce" meeting="false" start="2018-05-14" duration="13" complete="0" thirdDate="2018-05-07" thirdDate-constraint="0" expand="true"/>
+        <task id="78" name="Koniec czwartego sprintu" color="#8cb6ce" meeting="true" start="2018-06-04" duration="0" complete="0" thirdDate="2018-06-04" thirdDate-constraint="0" priority="4" expand="true">
             <depend id="85" type="2" difference="0" hardness="Strong"/>
         </task>
         <task id="79" name="Dodanie zegara i trybu gry na czas" color="#8cb6ce" meeting="false" start="2018-05-14" duration="13" complete="0" thirdDate="2018-05-14" thirdDate-constraint="0" expand="true"/>
@@ -176,7 +156,7 @@
         <task id="89" name="Testy integracyjne i akceptacyjne" color="#8cb6ce" meeting="false" start="2018-06-07" duration="6" complete="0" thirdDate="2018-06-07" thirdDate-constraint="0" expand="true">
             <depend id="101" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="101" name="Oddawanie projektu" color="#8cb6ce" meeting="true" start="2018-06-15" duration="0" complete="0" thirdDate="2018-06-20" thirdDate-constraint="0" expand="true"/>
+        <task id="101" name="Oddawanie projektu" color="#8cb6ce" meeting="true" start="2018-06-15" duration="0" complete="0" thirdDate="2018-06-15" thirdDate-constraint="0" priority="4" expand="true"/>
     </tasks>
     <resources>
         <resource id="0" name="Wojciech Franczuk" function="Default:1" contacts="" phone="">

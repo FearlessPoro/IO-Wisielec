@@ -27,7 +27,7 @@
                         <Font name="System Bold" size="25.0" />
                      </font>
                   </Button>
-                  <Button fx:id="returnButton" layoutX="25.0" layoutY="515.0" mnemonicParsing="false" onAction="#returnAction" prefHeight="70.0" prefWidth="70.0" text="Powrót" />
+                  <Button fx:id="returnButton" layoutX="25.0" layoutY="545.0" mnemonicParsing="false" onAction="#returnAction" prefHeight="50.0" prefWidth="140.0" text="Powrót do menu" />
                </children>
             </AnchorPane>
          </content>

@@ -63,12 +63,6 @@ public class AddPasswordController {
         alert.setHeaderText(null);
         ((Button) alert.getDialogPane().lookupButton(ButtonType.OK)).setText("OK");
 
-        alert.setOnCloseRequest(event -> {
-            try {
-                HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/mainView.fxml")));
-            }
-            catch (Exception e){}
-        });
         dialog = alert.getDialogPane();
 
         if(HangmanDelegate.nightModeOn)

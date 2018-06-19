@@ -17,7 +17,7 @@
                         <Font name="System Bold" size="30.0" />
                      </font>
                   </Label>
-                  <Button fx:id="returnButton" layoutX="25.0" layoutY="515.0" mnemonicParsing="false" onAction="#returnAction" prefHeight="70.0" prefWidth="70.0" styleClass="returnButton" text="Powrót" />
+                  <Button fx:id="returnButton" layoutX="25.0" layoutY="545.0" mnemonicParsing="false" onAction="#returnAction" prefHeight="50.0" prefWidth="140.0" styleClass="returnButton" text="Powrót do menu" />
                   <Button fx:id="easyLevelButton" layoutX="115.0" layoutY="210.0" mnemonicParsing="false" onAction="#easyLevelAction" prefHeight="250.0" prefWidth="200.0" text="ŁATWY">
                      <font>
                         <Font name="System Bold" size="25.0" />

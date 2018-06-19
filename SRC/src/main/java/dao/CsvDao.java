@@ -114,8 +114,8 @@ public class CsvDao {
     }
 
     public String canAdd(String passwordToAdd, String passwordToConfirm) throws FileNotFoundException, URISyntaxException {
-        String newPasswordToAdd = passwordToAdd.trim().toUpperCase();
-        String newPasswordToConfirm = passwordToConfirm.trim().toUpperCase();
+        String newPasswordToAdd = passwordToAdd.trim().replaceAll(" +", " ").toUpperCase();
+        String newPasswordToConfirm = passwordToConfirm.trim().replaceAll(" +", " ").toUpperCase();
         if (!newPasswordToAdd.equals(newPasswordToConfirm)){
             return "Hasła nie zgadzają się";
         } else {

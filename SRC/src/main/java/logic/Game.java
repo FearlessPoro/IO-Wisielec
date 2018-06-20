@@ -127,7 +127,11 @@ public class Game {
     }
 
     public void serialize() {
-        String dir = RankEntity.class.getResource("/").getFile();
+
+
+
+
+        String dir = Game.class.getResource("/").getFile();
         try (FileOutputStream fileOut = new FileOutputStream(dir + "/game.ser", false);
             ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
             out.writeObject(wordEntity);

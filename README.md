@@ -3,6 +3,19 @@
 ## Używanie aplikacji
 
 ## Kompilacja
+Należy najpierw upewnić się, że mamy zainstalowane Java Software Development Kit oraz Gradle w systemie.
+Sprawdzamy też czy mamy ustawione zmienne środowiskowe dla Gradle (GRADLE_HOME i PATH).
+Możemy sprawdzić czy wszystko jest zainstalowane i dobrze skonfugurowane komendami:
+
+```java - version```
+
+```gradle –v```
+
+Jeżeli powyższe działa, to przechodzimy to katalogu SRC i wykonujemy komendę:
+
+```gradle run``` - aby skompilować i uruchomić aplikację
+
+#### Uwaga: W przypadku Windowsa komenda ```gradle``` może nie działać, w takim wypadku należy użyć ```gradlew```. A jeżeli mamy możliwość skorzystać z IDE wspierającego gradle np. IntelliJ IDEA to powinniśmy wybrać tę opcję.
 
 ## Używanie aplikacji
 Obsługa aplikacji jest bardzo intuicyjna dla użytkownika. Na ekranie głównym, użytkownik ma możliwość rozpocząć nową grę, przełączyć aplikację w tryb nocny, przywrócić zapisaną grę, zobaczyć ranking, dodać nowe słowo, bądź też zamknąć aplikacje. Po wciśnięciu klawisza nowa gra, należy wybrać tryb gry, kategorię słowa, oraz jego poziom trudności. Wtedy pojawi się widok gry, w którym poprzez kliknięcie odpowiednich przycisków z literami należy dążyć do odgadnięcia hasła.

@@ -1,6 +1,7 @@
 # IO-Wisielec
 
-## Używanie aplikacji
+## Uruchomienie aplikacji
+Najbezpieczniejszą opcją jest postąpienie zgodnie z radami zawartymi w części "Kompilacja" poniżej i skompilowanie i uruchomienie projektu za pomocą komendy "gradle run". W wypadku jeśli nie jest to możliwe, można uruchomić program za pomocą pliku SRC\build\install\IO-wisielec\bin\IO-wisielec.bat . Uruchomienie za pomocą tej metody może skutkować nieprzewidzianym zachowaniem, gdyż ta wersja aplikacji nie była testowana.
 
 ## Kompilacja
 Należy najpierw upewnić się, że mamy zainstalowane Java Software Development Kit oraz Gradle w systemie.

@@ -326,7 +326,7 @@ public class GameViewController {
 
         alert.setOnCloseRequest(event -> {
             try {
-                HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/mainView.fxml")));
+                HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/mainView.fxml")));
             }
             catch (Exception e){}
         });
@@ -353,7 +353,7 @@ public class GameViewController {
 
         alert.setOnHidden((event) -> {
           try {
-              HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/mainView.fxml")));
+              HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/mainView.fxml")));
           }  catch (IOException e)
           {e.printStackTrace();}
         });
@@ -635,7 +635,7 @@ public class GameViewController {
     @FXML
     void giveUpAction(ActionEvent event) throws Exception{
         stopClock();
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/mainView.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/mainView.fxml")));
     }
 
     private void afterClickedOnLetter(Character character) {

@@ -23,24 +23,24 @@ public class LevelOfDifficultyController {
     @FXML
     void easyLevelAction(ActionEvent event) throws Exception{
         GameViewController.level = LevelDifficulty.EASY;
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/categories.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/categories.fxml")));
     }
 
     @FXML
     void mediumLevelAction(ActionEvent event) throws Exception{
         GameViewController.level = LevelDifficulty.MEDIUM;
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/categories.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/categories.fxml")));
     }
 
     @FXML
     void hardLevelAction(ActionEvent event) throws Exception{
         GameViewController.level = LevelDifficulty.HARD;
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/categories.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/categories.fxml")));
     }
 
     @FXML
     void returnAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/mainView.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/mainView.fxml")));
     }
 
 }

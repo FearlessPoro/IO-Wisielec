@@ -10,6 +10,7 @@ import logic.Game;
 import logic.GameTypes;
 
 import java.io.File;
+import java.net.URL;
 
 public class MainViewController {
 
@@ -41,24 +42,24 @@ public class MainViewController {
     @FXML
     void newGameAction(ActionEvent event) throws Exception {
         GameViewController.type = GameTypes.NEW_GAME;
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameMode.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/gameMode.fxml")));
     }
 
     @FXML
     void restoreGameAction(ActionEvent event) throws Exception{
         GameTypes.timed = false;
         GameViewController.type = GameTypes.RESTORED_GAME;
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/gameView.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/gameView.fxml")));
     }
 
     @FXML
     void rankingAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/ranking.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/ranking.fxml")));
     }
 
     @FXML
     void addPasswordAction(ActionEvent event) throws Exception{
-        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("../fxml/categoriesToAddPassword.fxml")));
+        HangmanDelegate.root.getChildren().add(FXMLLoader.load(getClass().getResource("/fxml/categoriesToAddPassword.fxml")));
     }
 
     @FXML
@@ -82,10 +83,17 @@ public class MainViewController {
 
     @FXML
     void initialize() {
-        String dir = Game.class.getResource("/").getFile();
-        dir += "/game.ser";
-        File f = new File(dir);
-        if(!f.exists()) {
+        URL resource = Game.class.getResource("/");
+        String dir = "";
+        File f = null;
+
+        if (resource != null) {
+            dir += resource.getFile();
+            dir += "/game.ser";
+            f = new File(dir);
+        }
+
+        if (f == null || !f.exists()) {
             restoreGameButton.setDisable(true);
         }
     }

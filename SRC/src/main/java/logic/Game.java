@@ -57,6 +57,10 @@ public class Game {
         return wordEntity.getUnknownWord();
     }
 
+    public String getWordToGuess() {
+        return wordEntity.getWordToGuess();
+    }
+
     public int getHearths() {
         return hangManEntity.getHearths();
     }
@@ -171,4 +175,6 @@ public class Game {
     public static String getRankEntity() {
         return rank.toString();
     }
+
+
 }
